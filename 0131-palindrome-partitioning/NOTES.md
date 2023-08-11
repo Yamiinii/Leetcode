@@ -1,0 +1,1 @@
+paritions will be from 1 to n-1
