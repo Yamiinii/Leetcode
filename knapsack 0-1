@@ -1,0 +1,28 @@
+Memoization:
+#include <bits/stdc++.h> 
+
+using namespace std;  // Don't forget to include this line to use the standard namespace.
+
+int solve(vector<int>& weight, vector<int>& value, int n, int w, vector<vector<int>>& dp)
+{
+	if (n == 0 || w == 0)
+		return 0;
+	if (dp[n][w] != -1)
+	{
+		return dp[n][w];
+	}
+
+	if (weight[n - 1] <= w)
+	{
+		return dp[n][w] = max(value[n - 1] + solve(weight, value, n - 1, w - weight[n - 1], dp),
+		                      solve(weight, value, n - 1, w, dp));
+	}
+	else
+		return dp[n][w] = solve(weight, value, n - 1, w, dp);
+}
+
+int knapsack(vector<int>& weight, vector<int>& value, int n, int maxWeight)
+{
+	vector<vector<int>> dp(n + 1, vector<int>(maxWeight + 1, -1));  // Initialize the dp table.
+	return solve(weight, value, n, maxWeight, dp);
+}
