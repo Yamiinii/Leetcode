@@ -26,3 +26,31 @@ int knapsack(vector<int>& weight, vector<int>& value, int n, int maxWeight)
 	vector<vector<int>> dp(n + 1, vector<int>(maxWeight + 1, -1));  // Initialize the dp table.
 	return solve(weight, value, n, maxWeight, dp);
 }
+
+
+Top Down:
+#include <bits/stdc++.h> 
+
+using namespace std;
+
+int knapsack(vector<int>& weight, vector<int>& value, int n, int maxWeight)
+{
+    vector<vector<int>> dp(n + 1, vector<int>(maxWeight + 1, 0));  // Initialize the dp table.
+
+    for(int i = 1; i <= n; i++)
+    {
+        for(int w = 1; w <= maxWeight; w++)
+        {
+            if(weight[i - 1] <= w)
+            {
+                dp[i][w] = max(value[i - 1] + dp[i - 1][w - weight[i - 1]], dp[i - 1][w]);
+            }
+            else
+            {
+                dp[i][w] = dp[i - 1][w];
+            }
+        }
+    }
+
+    return dp[n][maxWeight];
+}
