@@ -3,27 +3,32 @@ public:
     bool canPartition(vector<int>& nums) {
         int n = nums.size();
         int sum = 0;
-
-        for (int num : nums) {
-            sum += num;
+        for (int i = 0; i < n; i++) {
+            sum += nums[i];
         }
 
         if (sum % 2 != 0) {
-            return false; // If the sum is odd, can't partition into equal subsets
+            return false;
         }
 
-        int target = sum / 2;
+        sum = sum / 2;
 
-        // Create a DP array to keep track of whether a sum can be achieved using a subset of nums
-        vector<bool> dp(target + 1, false);
-        dp[0] = true; // Base case: empty subset can achieve a sum of 0
+        vector<vector<bool>> dp(n + 1, vector<bool>(sum + 1, false));
 
-        for (int num : nums) {
-            for (int i = target; i >= num; i--) {
-                dp[i] = dp[i] || dp[i - num];
+        for (int i = 0; i <= n; i++) {
+            dp[i][0] = true; // Subset with sum 0 is always possible
+        }
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= sum; j++) {
+                if (nums[i - 1] <= j) {
+                    dp[i][j] = dp[i - 1][j - nums[i - 1]] || dp[i - 1][j];
+                } else {
+                    dp[i][j] = dp[i - 1][j];
+                }
             }
         }
 
-        return dp[target];
+        return dp[n][sum];
     }
 };
