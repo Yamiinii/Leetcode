@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+    bool search(int len, string s) {
+        unordered_set<string> seen;
+        for (int i = 0; i + len <= s.length(); ++i) {
+            string substring = s.substr(i, len);
+            if (seen.count(substring)) {
+                return true;
+            }
+            seen.insert(substring);
+        }
+        return false;
+    }
+
+    int lengthOfLongestRepeatingSubstring(string s) {
+        int n = s.length();
+        int left = 1, right = n;
+        int ans = 0;
+        
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (search(mid, s)) {
+                ans = mid;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        
+        return ans;
+    }
+
+
+
+int main() {
+    string s="aabcaabdaab";
+
+    cout << lengthOfLongestRepeatingSubstring(s) << endl;
+
+    return 0;
+}
