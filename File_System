@@ -1,0 +1,41 @@
+#include <unordered_map>
+#include <string>
+
+class filesystem {
+    std::unordered_map<std::string, int> filevalues;
+
+public:
+    filesystem() {
+        // No need to assign a new unordered_map; it's automatically constructed.
+    }
+
+    bool createPath(std::string path, int value) {
+        if (path.empty())
+            return false;
+
+        if (filevalues.find(path) != filevalues.end())
+            return false;
+
+        // Find the last index of '/' in the path
+        int lastindex = path.find_last_of('/');
+        if (lastindex == std::string::npos)
+            return false; // Invalid path
+
+        // Extract the parent path from the given path
+        std::string currparent = path.substr(0, lastindex);
+
+        // Check if the parent path exists in the filevalues
+        if (currparent.length() > 1 && filevalues.find(currparent) == filevalues.end())
+            return false;
+
+        // Insert the path and value into the filevalues map
+        filevalues.insert({path, value});
+        return true;
+    }
+
+    int get(std::string path) {
+        if (filevalues.find(path) != filevalues.end())
+            return filevalues[path];
+        return -1; // Path not found
+    }
+};
