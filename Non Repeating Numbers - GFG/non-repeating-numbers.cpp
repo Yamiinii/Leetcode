@@ -1,0 +1,63 @@
+//{ Driver Code Starts
+#include<bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+
+// } Driver Code Ends
+class Solution
+{
+public:
+      vector<int> singleNumber(vector<int> nums) 
+    {
+        int xxory=0;
+        
+        for(auto it: nums)
+        xxory=xxory^it;
+        int number=xxory & -xxory;
+        int x=0;
+        int y=0;
+        for(auto it:nums){
+            if(it & number){
+                x=x^it;
+            }
+            else{
+                y=y^it;
+            }
+        }
+        nums.clear();
+        if(x>y){
+            nums.push_back(y);
+            nums.push_back(x);
+            return nums;
+        }
+        else{
+            nums.push_back(x);
+            nums.push_back(y);
+            return nums;
+        }
+    }
+};
+
+
+
+//{ Driver Code Starts.
+int main(){
+    int T;
+    cin >> T;
+    while(T--)
+    {
+    	int n; 
+    	cin >> n;
+    	vector<int> v(2 * n + 2);
+    	for(int i = 0; i < 2 * n + 2; i++)
+    		cin >> v[i];
+    	Solution ob;
+    	vector<int > ans = ob.singleNumber(v);
+    	for(auto i: ans)
+    		cout << i << " ";
+    	cout << "\n";
+    }
+	return 0;
+}
+// } Driver Code Ends
