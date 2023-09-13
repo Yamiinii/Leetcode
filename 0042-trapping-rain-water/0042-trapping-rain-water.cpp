@@ -1,30 +1,36 @@
 class Solution {
 public:
-    int trap(vector<int>& arr) {
-        int n = arr.size();
-        int trappedWater = 0;
-
-        if (n <= 2) {
-            return 0; // No trapped water possible with less than 3 bars.
-        }
-
-        int left = 0;
-        int right = n - 1;
-        int leftMax = 0;
-        int rightMax = 0;
-
-        while (left < right) {
-            if (arr[left] <= arr[right]) {
-                leftMax = max(leftMax, arr[left]);
-                trappedWater += max(0, leftMax - arr[left]);
-                left++;
-            } else {
-                rightMax = max(rightMax, arr[right]);
-                trappedWater += max(0, rightMax - arr[right]);
-                right--;
+    int trap(vector<int>& height) {
+        int n = height.size();
+        int lmax = height[0];
+        int rmax = height[n-1];
+        int lpos = 1;
+        int rpos = n-2;
+        int water = 0;
+        while(lpos <= rpos)
+        {
+            if(height[lpos] >= lmax)
+            {
+                lmax = height[lpos];
+                lpos++;
             }
+            else if(height[rpos] >= rmax)
+            {
+                rmax = height[rpos];
+                rpos--;
+            }
+            else if(lmax <= rmax && height[lpos] < lmax)
+            {
+                water += lmax - height[lpos];
+                lpos++;
+            }
+            else
+            {
+                water += rmax - height[rpos];
+                rpos--;
+            }
+        
         }
-
-        return trappedWater;
+        return water;
     }
 };
