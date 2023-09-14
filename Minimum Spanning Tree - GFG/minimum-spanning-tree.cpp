@@ -3,6 +3,44 @@
 using namespace std;
 
 // } Driver Code Ends
+
+
+class Disjointset{
+    vector<int> size,parent;
+    public:
+    Disjointset(int n)
+    {
+        size.resize(n+1,0);
+        parent.resize(n+1,0);
+        for(int i=0;i<=n;i++)
+        {
+            parent[i]=i;
+        }
+    }
+    
+    int findUpar(int node)
+    {
+        if(node==parent[node])
+        return node;
+        return parent[node]=findUpar(parent [node]);
+    }
+    
+    void unionbysize(int u,int v)
+    {
+        int ulp_u=findUpar(u);
+        int ulp_v=findUpar(v);
+        if(ulp_u==ulp_v) return ;
+        if(size[ulp_u]<size[ulp_v])
+       { parent[ulp_u]=ulp_v;
+           size[ulp_v]+=size[ulp_v];
+       }
+        else {
+        parent[ulp_v]=ulp_u;
+             size[ulp_u]+=size[ulp_u];
+        }
+       
+    }
+};
 class Solution
 {
 	public:
@@ -10,38 +48,32 @@ class Solution
     int spanningTree(int V, vector<vector<int>> adj[])
     {
         // code here
-        priority_queue <pair<int,int>,
-        vector<pair<int,int>> ,greater<pair<int,int>>> pq;
-        
-        vector<int> vis(V,0);
-        
-        pq.push({0,0});
-        int sum=0;
-        while(!pq.empty())
+        vector<pair<int,pair<int,int>>> edges;
+        for(int i=0;i<V;i++)
         {
-            auto it=pq.top();
-            pq.pop();
-            int wght=it.first;
-            int node=it.second;
-            
-            if(vis[node]==1)
-            continue;
-            
-            vis[node]=1;
-            sum+=wght;
-            for(auto i:adj[node])
+            for(auto it:adj[i])
             {
-                
-                int adjNode=i[0];
-                int adjeght=i[1];
-                if(!vis[adjNode])
-                {
-                    
-                    pq.push({adjeght,adjNode});
-                }
+                int adjNode=it[0];
+                int node=i;
+                int weight=it[1];
+                edges.push_back({weight,{node,adjNode}});
             }
         }
-        return sum;
+        Disjointset ds(V);
+        sort(edges.begin(),edges.end());
+        int wght=0;
+        for(auto it:edges)
+        {
+            int wt=it.first;
+            int u=it.second.first;
+            int v=it.second.second;
+            if(ds.findUpar(u)!=ds.findUpar(v))
+            {
+                wght+=wt;
+                ds.unionbysize(u,v);
+            }
+        }
+        return wght;
     }
 };
 
