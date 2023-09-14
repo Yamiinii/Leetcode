@@ -1,5 +1,22 @@
 Dynamic graphs and  two elements same belong constant time
+***********************************************************************************************************************
+gfg q
+int find(int A[],int X)
+{
+       //add code here
+       if(X==A[X]) return X;
+       return A[X]=find(A, A[X]);
+}
+void unionSet(int A[], int X, int Z) {
+    // Find the representatives (parents) of sets containing elements X and Z
+    int parentX = find(A, X);
+    int parentZ = find(A, Z);
+    
+    // Make one set the child of the other (choosing Z's parent as the new parent)
+    A[parentX] = parentZ;
+}
 
+***********************************************************************************************************************
 class Disjointset{
     vector<int> rank,parent;
     public:
