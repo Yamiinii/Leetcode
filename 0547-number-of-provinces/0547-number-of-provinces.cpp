@@ -1,37 +1,60 @@
-class Solution {
+class DisjointSet {
+    vector<int> rank, parent, size;
+
 public:
-    void dfs(int node, vector<vector<int>>& adjList, int visited[]) {
-        visited[node] = 1;
-        for (auto it : adjList[node]) {
-            if (!visited[it]) {
-                dfs(it, adjList, visited);
-            }
+    DisjointSet(int n) {
+        rank.resize(n + 1, 0);
+        size.resize(n + 1, 1);  // Initialize size of each set to 1
+        parent.resize(n + 1, 0);
+        for (int i = 0; i <= n; i++) {
+            parent[i] = i;
         }
     }
 
+    int findUpar(int node) {
+        if (node == parent[node])
+            return node;
+        return parent[node] = findUpar(parent[node]);
+    }
+
+    void unionByRank(int u, int v) {
+        int ulp_u = findUpar(u);
+        int ulp_v = findUpar(v);
+        if (ulp_u == ulp_v)
+            return;
+        if (rank[ulp_u] < rank[ulp_v]) {
+            parent[ulp_u] = ulp_v;
+            size[ulp_v] += size[ulp_u];  // Update the size of the merged set
+        } else if (rank[ulp_v] < rank[ulp_u]) {
+            parent[ulp_v] = ulp_u;
+            size[ulp_u] += size[ulp_v];  // Update the size of the merged set
+        } else {
+            parent[ulp_v] = ulp_u;
+            rank[ulp_u]++;
+            size[ulp_u] += size[ulp_v];  // Update the size of the merged set
+        }
+    }
+};
+
+class Solution {
+public:
     int findCircleNum(vector<vector<int>>& isConnected) {
         int n = isConnected.size();
-        vector<vector<int>> adjList(n);
-        int cnt = 0; // Initialize the count of provinces
+        DisjointSet ds(n);
+        set<int> s;
+
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (isConnected[i][j] == 1) {
-                    // City i and city j are directly connected
-                    adjList[i].push_back(j);
+                    ds.unionByRank(i, j);
                 }
             }
         }
 
-        int visited[n];
-        memset(visited, 0, sizeof(visited)); // Initialize visited array
-        
         for (int i = 0; i < n; i++) {
-            if (!visited[i]) {
-                dfs(i, adjList, visited);
-                cnt++;
-            }
+            s.insert(ds.findUpar(i));  // Insert ultimate parents of each node into the set
         }
-        
-        return cnt; // Return the count of provinces
+
+        return s.size();
     }
 };
