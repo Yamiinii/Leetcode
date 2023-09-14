@@ -9,23 +9,23 @@ public:
             graph[ticket[0]].push(ticket[1]);
         }
 
-        // Start DFS from the "JFK" airport
         dfs("JFK");
 
-        // Reverse the itinerary to get the correct order
+        // Reverse the itinerary to obtain the correct order
         reverse(itinerary.begin(), itinerary.end());
 
         return itinerary;
     }
 
     void dfs(const string& airport) {
-        auto& destinations = graph[airport];
-        while (!destinations.empty()) {
-            string nextAirport = destinations.top();
-            destinations.pop();
+        // Continue to explore destinations while there are more options
+        while (!graph[airport].empty()) {
+            string nextAirport = graph[airport].top();
+            graph[airport].pop();
             dfs(nextAirport);
         }
 
+        // Add the current airport to the itinerary when no more destinations are available
         itinerary.push_back(airport);
     }
 };
