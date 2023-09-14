@@ -3,42 +3,50 @@
 using namespace std;
 
 // } Driver Code Ends
-class Solution
-{
-	public:
-	//Function to find the shortest distance of all the vertices
-    //from the source vertex S.
-    vector <int> dijkstra(int V, vector<vector<int>> adj[], int S)
-    {
-        // Code here
-        priority_queue <pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> pq;
-        vector<int> dist(V);
-        for(int it=0;it<V;it++)
-        {
-            dist[it]=1e9;
-        }
-        dist[S]=0;
-        pq.push({0,S});
-        while(!pq.empty())
-        {
-            int dis=pq.top().first;
-            int node=pq.top().second;
-            pq.pop();
+
+class Solution {
+public:
+    // Function to find the shortest distance of all the vertices
+    // from the source vertex S.
+    vector<int> dijkstra(int V, vector<vector<int>> adj[], int S) {
+        // Create a set to store pairs of distances and nodes.
+        set<pair<int, int>> st;
+        
+        // Initialize the dist vector with a large value for all vertices.
+        vector<int> dist(V, 1e9);
+        
+        // Insert the pair {0, S} into the set to start the algorithm.
+        st.insert({0, S});
+        dist[S] = 0;
+       
+        while (!st.empty()) {
+            // Extract the element with the smallest distance.
+            auto it = *(st.begin());
+            int dis = it.first;
+            int node = it.second;
+            st.erase(it);
             
-            for(auto it: adj[node])
-            {
-                int edgeweight=it[1];
-                int adjnode=it[0];
-                if(dis+edgeweight<dist[adjnode])
-                {
-                    dist[adjnode]=dis+edgeweight;
-                    pq.push({dist[adjnode],adjnode});
+            // Iterate through adjacent nodes.
+            for (auto i : adj[node]) {
+                int edgeWeight = i[1];
+                int adjNode = i[0];
+                
+                if (dis + edgeWeight < dist[adjNode]) {
+                    // If the distance is updated, remove and insert the updated distance.
+                    if (dist[adjNode] != 1e9) {
+                        st.erase({dist[adjNode], adjNode});
+                    }
+                    
+                    dist[adjNode] = dis + edgeWeight;
+                    st.insert({dist[adjNode], adjNode});
                 }
             }
         }
+        
         return dist;
     }
 };
+
 
 
 //{ Driver Code Starts.
