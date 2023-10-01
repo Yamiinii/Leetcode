@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //BFS
     bool isBipartite(vector<vector<int>>& graph) {
         int n = graph.size();
         vector<int> coloured(n, -1); // Initialize to -1
