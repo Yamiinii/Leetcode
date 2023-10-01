@@ -3,9 +3,8 @@ public:
     bool isBipartite(vector<vector<int>>& graph) {
         int n = graph.size();
         vector<int> coloured(n, -1); // Initialize to -1
-
         for (int i = 0; i < n; i++) {
-            if (coloured[i] == -1 ) {
+            if (coloured[i] == -1) {
                 queue<int> q;
                 q.push(i);
                 coloured[i] = 0; // Start with color 0
@@ -25,7 +24,6 @@ public:
                 }
             }
         }
-
         return true; // No conflicts, graph is bipartite
     }
 };
