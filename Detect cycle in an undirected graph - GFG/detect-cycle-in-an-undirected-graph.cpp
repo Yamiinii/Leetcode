@@ -5,39 +5,38 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    // Function to detect cycle in an undirected gra
-
-    bool dfs(vector<int> adj[], int visited[], int node, int parent) {
-        visited[node] = 1;
-        for (auto adjacent : adj[node]) {
-            if (!visited[adjacent]) {
-                if (dfs(adj, visited, adjacent, node))
-                    return true;
-            } else if (parent != adjacent) {
-                return true; // Cycle detected
-            }
+ bool dfs(int node, int parent,vector<int> adj[], vector<int>& visited)
+{
+    visited[node] = 1;
+    for (auto it : adj[node])
+    {
+        if (!visited[it])
+        {
+            if (dfs(it,node, adj, visited))
+                return true;
+           
         }
-
-        return false; // No cycle detected
+         else if(it!=parent)
+            return true;
     }
+    return false;
+}
 
-    bool isCycle(int V, vector<int> adj[]) {
-        int visited[V];
-        fill(visited, visited + V, 0);
-
-        for (int i = 0; i < V; i++) {
-            if (!visited[i]) {
-                if (dfs(adj, visited, i, -1))
-                    return true;
-            }
+// Function to detect cycle in an undirected graph.
+bool isCycle(int V, vector<int> adj[]) {
+    vector<int> visited(V, 0);
+    for (int i = 0; i < V; i++)
+    {
+        if (!visited[i])
+        {
+            if (dfs(i,-1, adj, visited))
+                return true;
         }
-
-        return false;
     }
+    return false;
+}
+
 };
-
-
-    
 
 //{ Driver Code Starts.
 int main() {
