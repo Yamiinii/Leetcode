@@ -5,7 +5,7 @@ public:
         vector<int> coloured(n, -1); // Initialize to -1
 
         for (int i = 0; i < n; i++) {
-            if (coloured[i] == -1 && !graph[i].empty()) {
+            if (coloured[i] == -1 ) {
                 queue<int> q;
                 q.push(i);
                 coloured[i] = 0; // Start with color 0
