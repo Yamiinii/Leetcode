@@ -5,38 +5,49 @@ using namespace std;
 // } Driver Code Ends
 class Solution
 {
+    //***************************************************************************
+    //using KAHN'S ALGORITHM
+    //***************************************************************************
 	public:
 	//Function to return list containing vertices in Topological order. 
-	void dfs(stack<int> &st,vector<int> adj[],int V,int visited[],int node)
-	{
-	    visited[node]=1;
-	    for(auto it:adj[node])
-	    {
-	        if(!visited[it])
-	        dfs(st,adj,V,visited,it);
-	    }
-	    st.push(node);
-	}
-	
 	vector<int> topoSort(int V, vector<int> adj[]) 
 	{
 	    // code here
-	    int visited[V]={0};
-	    stack<int> st;
-	    for(int i =0;i<V;i++)
+	    int vis[V]={0};
+	   vector<int> indegree(V, 0);
+	    for(int i=0;i<V;i++)
 	    {
-	        if(!visited[i])
+	        for(auto it:adj[i])
 	        {
-	            dfs(st,adj,V,visited,i);
+	            indegree[it]++;
 	        }
 	    }
-	    vector<int> ans;
-	    while(!st.empty())
+	    
+	    queue<int> q;
+	    for(int i=0;i<V;i++)
 	    {
-	        ans.push_back(st.top());
-	        st.pop();
+	        if(indegree[i]==0)
+	        q.push(i);
 	    }
-	    return ans;
+	    
+	    vector<int> topo;
+	    while(!q.empty())
+	    {
+	        int front=q.front();
+	        q.pop();
+	        topo.push_back(front);
+	        
+	        for(auto it:adj[front])
+	        {
+	            indegree[it]--;
+	            if(indegree[it]==0)
+	            q.push(it);
+	        }
+	    }
+	    return topo;
+	    
+	    
+	    
 	}
 };
 
