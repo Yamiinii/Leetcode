@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //bfs kahn
     vector<int> eventualSafeNodes(vector<vector<int>>& adj) {
         int V=adj.size();
         vector<int> adjRev[V];
