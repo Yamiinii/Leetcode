@@ -27,11 +27,16 @@ public:
     
     void remove(int key) {
 
- for (auto it = v.begin(); it != v.end(); ++it) {
-            if (it->first == key) {
-                v.erase(it); // Remove the pair with the specified key
-                return;
-            }
+ // for (auto it = v.begin(); it != v.end(); ++it) {
+ //            if (it->first == key) {
+ //                v.erase(it); // Remove the pair with the specified key
+ //                return;
+ //            }
+ //        }
+        for(int i=0;i<v.size();i++)
+        {
+            if(v[i].first==key)
+              v[i].first=INT_MAX;
         }
     }
 };
