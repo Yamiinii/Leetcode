@@ -1,29 +1,25 @@
 class Solution {
 public:
     int numSubarrayProductLessThanK(vector<int>& nums, int k) {
-        if (k <= 1) {
-            return 0; // No subarray will have a product less than or equal to 0
-        }
-
+        int head = 0;
+        int tail = 0;
+        int ans = 1;
+        int final_ans = 0;
         int n = nums.size();
-        int left = 0;
-        int product = 1;
-        int count = 0;
 
-        for (int right = 0; right < n; ++right) {
-            product *= nums[right];
-            
-            while (product >= k) {
-                product /= nums[left];
-                left++;
+        for (head = 0; head < n; head++) {
+            ans *= nums[head];
+
+            // Shrink the window from the left if ans >= k
+            while (ans >= k && tail <= head) {
+                ans /= nums[tail];
+                tail++;
             }
-            
-            // The number of subarrays that end at the current right index
-            // and have a product less than k is equal to the size of the window
-            // (right - left + 1).
-            count += right - left + 1;
+
+            // Count subarrays within the valid product range
+            final_ans += (head - tail + 1);
         }
 
-        return count;
+        return final_ans;
     }
 };
