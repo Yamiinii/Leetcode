@@ -1,26 +1,22 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        int front = 0;
-        int back = 0;
-        int len = 0;
-        unordered_set<char> charSet; // Set to track characters in the current substring
-        
-        while (back < s.length()) {
-            char c = s[back];
-            
-            // If the character is not in the current substring, add it to the set and move the window.
-            if (charSet.find(c) == charSet.end()) {
-                charSet.insert(c);
-                len = max(len, back - front + 1);
-                back++;
-            } else {
-                // If the character is already in the substring, remove the front character and move the window.
-                charSet.erase(s[front]);
-                front++;
+        int tail=0;
+        int ans=0;
+        unordered_map<char,int> mpp;
+        int head;
+        for(head=0;head<s.size();head++)
+        {
+            while(mpp[s[head]]>0)
+                
+            {
+                ans=max(ans,head-tail);
+                mpp[s[tail]]--;
+                tail++;
             }
+            mpp[s[head]]++;
         }
-        
-        return len;
+        //exited the loop that's why head-tail
+        return max(ans,head-tail);
     }
 };
