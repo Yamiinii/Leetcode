@@ -1,19 +1,19 @@
 class Solution {
+    int dp[10001];
 public:
+    int solve(vector<int>& cost,int size)
+    {
+        if(size==0)
+            return cost[0];
+        else if(size==1)
+            return cost[1];
+        if(dp[size]!=0)
+            return dp[size];
+        return dp[size]=cost[size]+min(solve(cost,size-1),solve(cost,size-2));
+    }
+    
     int minCostClimbingStairs(vector<int>& cost) {
-        int n = cost.size();
-        vector<int> dp(n + 1, 0);
-        
-        // Initialize the DP array with the cost of the first two steps.
-        dp[0] = cost[0];
-        dp[1] = cost[1];
-        
-        for (int i = 2; i < n; i++) {
-            // Calculate the minimum cost to reach the current step.
-            dp[i] = cost[i] + min(dp[i - 1], dp[i - 2]);
-        }
-        
-        // The final answer is the minimum cost to reach the last step or the second-to-last step.
-        return min(dp[n - 1], dp[n - 2]);
+        int n=cost.size();
+        return min(solve(cost,n-1),solve(cost,n-2));
     }
 };
