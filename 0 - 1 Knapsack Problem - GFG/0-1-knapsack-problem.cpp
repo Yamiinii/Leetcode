@@ -7,32 +7,29 @@ using namespace std;
 class Solution
 {
     public:
-    int memo(int W, int wt[], int val[], int n,vector<vector<int>> &dp)
-    {
-        if(W==0 || n==0)
-        return 0;
-        
-        if(dp[W][n]!=-1)
-        return dp[W][n];
-        
-        if(wt[n-1]<=W)
-        {
-            dp[W][n]=max(val[n-1]+memo(W-wt[n-1],wt,val,n-1,dp),0+memo(W,wt,val,n-1,dp));
-        }
-        else if(wt[n-1]>W)
-          dp[W][n]=memo(W,wt,val,n-1,dp);
-         
-        return dp[W][n];
-        
-    }
-    
     //Function to return max value that can be put in knapsack of capacity W.
     int knapSack(int W, int wt[], int val[], int n) 
     { 
-       vector<vector<int>> dp(W + 1, vector<int>(n + 1, -1));
        // Your code here
-       return   memo(W,wt,val,n,dp);
-     
+       int dp[W+1][n+1];
+       for(int i=0;i<=W;i++)
+       {
+           for(int j=0;j<=n;j++)
+           {
+               if(i==0|| j==0)
+               dp[i][j]=0;
+               else if(wt[j-1]<=i)
+               {
+                   int inc=val[j-1]+dp[i-wt[j-1]][j-1];
+                   int exc=dp[i][j-1];
+                   dp[i][j]=max(inc,exc);
+               }
+               else
+               dp[i][j]=dp[i][j-1];
+           }
+       }
+       return dp[W][n];
+       
     }
 };
 
