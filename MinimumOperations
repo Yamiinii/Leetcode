@@ -1,0 +1,36 @@
+Recursive:
+int minOperation(int n) {
+    // Base cases
+    if (n == 1) return 1;
+    if (n == 2) return 2;
+
+    // If n is even
+    if (n % 2 == 0) {
+        return 1 + minOperation(n / 2);
+    } 
+    // If n is odd
+    else {
+        // Choose the minimum between adding 1 and subtracting 1
+        return 1 + std::min(minOperation(n + 1), minOperation(n - 1));
+    }
+}
+
+
+DP:
+int minOperation(int k) {
+    // Base cases
+    vector<int> dp(k + 1, 0);
+ 
+    for (int i = 1; i <= k; i++) {
+ 
+        dp[i] = dp[i - 1] + 1;
+ 
+        // For all even numbers
+        if (i % 2 == 0) {
+            dp[i]
+                = min(dp[i],
+                      dp[i / 2] + 1);
+        }
+    }
+    return dp[k];
+}
