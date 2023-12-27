@@ -1,0 +1,21 @@
+int func(int i, int j, const std::string& str, std::vector<std::vector<int>>& dp) {
+    if (i > j) return 0;
+    if (i == j) return 1;
+    if (dp[i][j] != -1) return dp[i][j];
+
+    int ans = 1 + func(i + 1, j, str, dp);
+
+    for (int k = i + 1; k <= j; k++) {
+        if (str[i] == str[k]) {
+            int temp = (k - i == 1) ? 1 + func(k + 1, j, str, dp) : func(i + 1, k - 1, str, dp) + func(k + 1, j, str, dp);
+            ans = std::min(ans, temp);
+        }
+    }
+    return dp[i][j] = ans;
+}
+
+int minStepToDeleteString(const std::string& s) {
+    int n = s.length();
+    std::vector<std::vector<int>> dp(n, std::vector<int>(n, -1));
+    return func(0, n - 1, s, dp);
+}
