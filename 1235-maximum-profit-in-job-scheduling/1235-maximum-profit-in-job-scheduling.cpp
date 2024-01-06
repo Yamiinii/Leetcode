@@ -1,26 +1,32 @@
 class Solution {
 public:
     int jobScheduling(vector<int>& startTime, vector<int>& endTime, vector<int>& profit) {
-        int numJobs = profit.size(); // Number of jobs
-        vector<tuple<int, int, int>> jobs(numJobs);
-      
-        for (int i = 0; i < numJobs; ++i) {
+        int n = startTime.size();
+        vector<vector<int>> jobs(n);
+        for (int i = 0; i < n; ++i) {
             jobs[i] = {endTime[i], startTime[i], profit[i]};
         }
-      
         sort(jobs.begin(), jobs.end());
-        vector<int> dp(numJobs + 1);
-      
-        for (int i = 0; i < numJobs; ++i) {
-            auto [endTime, startTime, profit] = jobs[i];
-          
-            int latestNonConflictJobIndex = upper_bound(jobs.begin(), jobs.begin() + i, startTime, [&](int time, const auto& job) -> bool {
-                return time < get<0>(job);
-            }) - jobs.begin();
-          
-            dp[i + 1] = max(dp[i], dp[latestNonConflictJobIndex] + profit);
+
+        vector<int> dp(n);
+        dp[0] = jobs[0][2];
+
+        for (int i = 1; i < n; ++i) {
+            int l = 0, r = i;
+            while (l < r) {
+                int mid = l + (r - l) / 2;
+                if (jobs[mid][0] <= jobs[i][1]) {
+                    l = mid + 1;
+                } else {
+                    r = mid;
+                }
+            }
+            int currProfit = jobs[i][2];
+            if (l > 0) {
+                currProfit += dp[l - 1];
+            }
+            dp[i] = max(dp[i - 1], currProfit);
         }
-      
-        return dp[numJobs];
+        return dp[n - 1];
     }
 };
