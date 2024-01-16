@@ -1,10 +1,46 @@
 class Solution {
 public:
-    vector<int> countBits(int num) {
-        vector<int> ans(num + 1, 0); // Initialize a vector of size num+1 with 0s
-        for (int n = 1; n <= num; n++) {
-            ans[n] = ans[n >> 1] + (n & 1); // Use bit manipulation to count set bits
+
+    int solve(int n,vector<int>&dp)
+    {
+
+
+        if(dp[n]!=-1)
+        {
+            
+            return dp[n];
         }
-        return ans;
+
+        int a = 0,b=0;
+        if(n%2==0)
+        {
+            a+=solve(n/2,dp);
+            dp[n]=a;
+        }
+        else
+        {
+            b+=(1 + solve(n/2,dp));
+            dp[n]=b;
+        }
+    return  dp[n];
+    }
+
+
+    vector<int> countBits(int n) {
+        vector<int>dp(n+1,-1);
+        dp[0]=0;
+        if(n!=0)
+        {
+             dp[1]=1;
+        }
+       
+
+    for(int i=n; i>=0 ;i--)
+    {
+         int a =  solve(i,dp);
+         dp[i]=a;
+    }
+     
+        return dp;
     }
 };
