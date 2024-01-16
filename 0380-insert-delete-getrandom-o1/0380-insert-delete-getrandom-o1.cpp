@@ -1,47 +1,42 @@
 class RandomizedSet {
      private:
-set<int> s;
+vector<int> v;
+    unordered_map<int,int> mpp;
+    
 public:
    
     RandomizedSet() {
         
     }
-    
+    bool ispresent(int val)
+    {
+        if(mpp.find(val)!=mpp.end())
+            return true;
+        return false;
+    }
     bool insert(int val) {
-        auto vall = s.find(val);
-        if (vall != s.end())
+        if(ispresent(val))
             return false;
-
-        s.insert(val);
+        v.push_back(val);
+        mpp[val]=v.size()-1;
         return true;
     }
     
     bool remove(int val) {
-        auto itr = s.find(val);
-        if (itr == s.end())
-            return false;
-
-        s.erase(itr);
+    if(!ispresent(val))
+        return false;
+        
+    auto it=mpp.find(val);
+    v[it->second]=v.back();
+        v.pop_back();
+        mpp[v[it->second]]=it->second;
+        mpp.erase(val);
         return true;
         
     }
     
     int getRandom() {
-        if (s.empty()) {
-            // You can handle this case based on your requirements
-            // For now, let's return -1 to indicate an empty set
-            return -1;
-        }
-
-        // Generate a random index
-        std::size_t randomIndex = std::rand() % s.size();
-
-        // Create an iterator and move it to the random index
-        auto itr = s.begin();
-        std::advance(itr, randomIndex);
-
-        // Return the value at the random index
-        return *itr;
+       return v[rand()%v.size()];
     }
 };
 
