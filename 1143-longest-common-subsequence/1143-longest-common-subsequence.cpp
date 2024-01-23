@@ -4,32 +4,32 @@
 
 class Solution {
 public:
-    int solve(const std::string& text1, const std::string& text2, int i, int j, std::vector<std::vector<int>>& dp) {
-        // Base cases
-        if (i == 0 || j == 0) {
-            return 0;
-        }
+    
 
-        // Check if the result is already memoized
-        if (dp[i][j] != -1) {
-            return dp[i][j];
-        }
+    int longestCommonSubsequence(const std::string& s1, const std::string& s2) {
+int n = s1.size();
+    int m = s2.size();
 
-        if (text1[i - 1] == text2[j - 1]) {
-            return dp[i][j] = 1 + solve(text1, text2, i - 1, j - 1, dp);
-        } else {
-            return dp[i][j] = std::max(solve(text1, text2, i, j - 1, dp), solve(text1, text2, i - 1, j, dp));
+    vector<vector<int>> dp(n + 1, vector<int>(m + 1, -1)); // Create a DP table
+
+    // Initialize the base cases
+    for (int i = 0; i <= n; i++) {
+        dp[i][0] = 0;
+    }
+    for (int i = 0; i <= m; i++) {
+        dp[0][i] = 0;
+    }
+
+    // Fill in the DP table to calculate the length of LCS
+    for (int ind1 = 1; ind1 <= n; ind1++) {
+        for (int ind2 = 1; ind2 <= m; ind2++) {
+            if (s1[ind1 - 1] == s2[ind2 - 1])
+                dp[ind1][ind2] = 1 + dp[ind1 - 1][ind2 - 1]; // Characters match, increment LCS length
+            else
+                dp[ind1][ind2] = max(dp[ind1 - 1][ind2], dp[ind1][ind2 - 1]); // Characters don't match, consider the maximum from left or above
         }
     }
 
-    int longestCommonSubsequence(const std::string& text1, const std::string& text2) {
-        int m = text1.size();
-        int n = text2.size();
-
-        // Initialize memoization table with -1
-        std::vector<std::vector<int>> dp(m + 1, std::vector<int>(n + 1, -1));
-
-        // Call the recursive function with memoization
-        return solve(text1, text2, m, n, dp);
+    return dp[n][m];
     }
 };
