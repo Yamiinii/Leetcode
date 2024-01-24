@@ -1,23 +1,38 @@
 class Solution {
 public:
-    int minInsertions(string text1) {
-        int m = text1.size();
-        string text2 = text1;
-        reverse(text2.begin(), text2.end());
-        vector<vector<int>> dp(m + 1, vector<int>(m + 1, 0));
+    
+         int longestCommonSubsequence(const std::string& s1, const std::string& s2) {
+int n = s1.size();
+    int m = s2.size();
 
-        for (int i = 1; i <= m; ++i) {
-            for (int j = 1; j <= m; ++j) {
-                if (text1[i - 1] == text2[j - 1]) {
-                    dp[i][j] = 1 + dp[i - 1][j - 1];
-                } else {
-                    dp[i][j] = max(dp[i][j - 1], dp[i - 1][j]);
-                }
-            }
+    vector<vector<int>> dp(n + 1, vector<int>(m + 1, -1)); // Create a DP table
+
+    // Initialize the base cases
+    for (int i = 0; i <= n; i++) {
+        dp[i][0] = 0;
+    }
+    for (int i = 0; i <= m; i++) {
+        dp[0][i] = 0;
+    }
+
+    // Fill in the DP table to calculate the length of LCS
+    for (int ind1 = 1; ind1 <= n; ind1++) {
+        for (int ind2 = 1; ind2 <= m; ind2++) {
+            if (s1[ind1 - 1] == s2[ind2 - 1])
+                dp[ind1][ind2] = 1 + dp[ind1 - 1][ind2 - 1]; // Characters match, increment LCS length
+            else
+                dp[ind1][ind2] = max(dp[ind1 - 1][ind2], dp[ind1][ind2 - 1]); // Characters don't match, consider the maximum from left or above
         }
+    }
 
-    // int deletion=text1.size()-dp[m][m];
-        int insertion=text2.size()-dp[m][m];
-        return insertion;
+    return dp[n][m];
+    }
+    int longestPalindromeSubseq(string s) {
+        string s1=s;
+        reverse(s1.begin(),s1.end());
+        return longestCommonSubsequence(s,s1);
+    }
+    int minInsertions(string s) {
+        return s.size()-longestPalindromeSubseq(s);
     }
 };
