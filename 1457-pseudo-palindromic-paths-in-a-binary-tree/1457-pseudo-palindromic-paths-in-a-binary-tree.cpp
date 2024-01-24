@@ -1,3 +1,11 @@
+// Pass by Reference:
+// Instead of passing the vector by value, pass it by reference to avoid unnecessary copying.
+
+// Use an Array Instead of Map:
+// Since the values in the tree are integers, you can use an array to keep track of the frequency of each digit. This can be more efficient than using an unordered map.
+
+// Avoid Recreating Frequency Map:
+// Instead of recreating the frequency map for each path, update it incrementally as you traverse the tree.
 class Solution {
 public:
     bool check(vector<int>& freq) {
