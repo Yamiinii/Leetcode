@@ -1,29 +1,28 @@
 class Solution {
 public:
-    void backtracking(vector<int>& a, int target, int i, vector<int>& current, vector<vector<int>>& result, int sum) {
-        if (sum == target) {
-            result.push_back(current);
+    void findall(int idx,vector<int>& candidates, int target,vector<int> &v,vector<vector<int>> &ans)
+    {
+
+        if(idx==candidates.size())
+        {
+            if(target==0)
+                ans.push_back(v);
             return;
         }
-
-        if (i == a.size() || sum > target) {
-            return;
+        
+        if(candidates[idx]<=target)
+        {
+            v.push_back(candidates[idx]);
+             findall(idx,candidates,target-candidates[idx],v,ans);
+            v.pop_back();
         }
-
-        // Include the current number in the combination
-        current.push_back(a[i]);
-        backtracking(a, target, i, current, result, sum + a[i]);
-        current.pop_back();
-
-        // Skip the current number and move to the next one
-        backtracking(a, target, i + 1, current, result, sum);
+           findall(idx+1,candidates,target,v,ans);
     }
-
+    
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        vector<vector<int>> result;
-        vector<int> current;
-        int sum = 0;
-        backtracking(candidates, target, 0, current, result, sum);
-        return result;
+        vector<vector<int>> ans;
+        vector<int> v;
+        findall(0,candidates,target,v,ans);
+        return ans;
     }
 };
