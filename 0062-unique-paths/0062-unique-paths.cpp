@@ -1,21 +1,33 @@
 class Solution {
 public:
-    int countPaths(int i, int j, int m, int n, vector<vector<int>>& dp) {
-        if (i == m - 1 && j == n - 1)
-            return 1;
-        if (i >= m || j >= n)
-            return 0;
-        if (dp[i][j] != -1)
+       int rec(int m, int n, int i, int j, std::vector<std::vector<int>>& dp) {
+     
+        if (i == m - 1 && j == n - 1) {
+            return dp[i][j] = 1;
+        }
+     
+        if (dp[i][j] != -1) {
             return dp[i][j];
+        }
         
-        int rightPaths = countPaths(i + 1, j, m, n, dp);
-        int downPaths = countPaths(i, j + 1, m, n, dp);
+        int right = 0, down = 0;
+     
+        if (j + 1 < n) {
+            right = rec(m, n, i, j + 1, dp);
+        }
         
-        return dp[i][j] = rightPaths + downPaths;
+        if (i + 1 < m) {
+            down = rec(m, n, i + 1, j, dp);
+        }
+        
+     
+        return dp[i][j] = right + down;
     }
-
+    
     int uniquePaths(int m, int n) {
-        vector<vector<int>> dp(m, vector<int>(n, -1));
-        return countPaths(0, 0, m, n, dp);
+       
+        std::vector<std::vector<int>> dp(m, std::vector<int>(n, -1));
+ 
+        return rec(m, n, 0, 0, dp);
     }
 };
