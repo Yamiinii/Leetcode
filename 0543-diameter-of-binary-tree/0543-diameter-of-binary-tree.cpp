@@ -9,7 +9,6 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-
 class Solution {
 public:
     int height(TreeNode* root) {
@@ -21,21 +20,12 @@ public:
     }
     
     int diameterOfBinaryTree(TreeNode* root) {
-        int diameter = 0;
-        heightAndDiameter(root, diameter);
-        return diameter;
-    }
-
-private:
-    int heightAndDiameter(TreeNode* root, int& diameter) {
         if (root == nullptr)
             return 0;
-        int leftHeight = heightAndDiameter(root->left, diameter);
-        int rightHeight = heightAndDiameter(root->right, diameter);
-        
-        // Update the diameter if the path through the root is larger
-        diameter = max(diameter, leftHeight + rightHeight);
-        
-        return max(leftHeight, rightHeight) + 1;
+        int l = diameterOfBinaryTree(root->left);
+        int r = diameterOfBinaryTree(root->right);
+        int heigh = height(root->left) + height(root->right);
+        int ans = max(heigh, max(l, r));
+        return ans;
     }
 };
