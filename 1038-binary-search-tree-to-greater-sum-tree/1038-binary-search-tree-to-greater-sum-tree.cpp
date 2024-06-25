@@ -15,17 +15,9 @@ public:
     void recursion(TreeNode* root)
     {
         if (root == nullptr) return;
-
-        // Traverse right subtree
         recursion(root->right);
-
-        // Update sum with current node's value
         sum += root->val;
-
-        // Update current node's value
         root->val = sum;
-
-        // Traverse left subtree
         recursion(root->left);
         
     }
