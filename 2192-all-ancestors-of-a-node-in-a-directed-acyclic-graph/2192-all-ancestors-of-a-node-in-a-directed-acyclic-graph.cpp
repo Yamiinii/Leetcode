@@ -14,7 +14,7 @@ public:
     }
     
     vector<vector<int>> getAncestors(int n, vector<vector<int>>& edges) {
-        vector<vector<int>> adj(n);
+        vector<vector<int>> adj(n);//yami don't forget to initialise
         vector<vector<int>> ans(n);
         for(int i=0;i<edges.size();i++)
         {
