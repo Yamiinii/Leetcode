@@ -2,31 +2,22 @@
 #include <vector>
 
 using namespace std;
-
+//optimal using kadane
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
-        int n = nums.size();
-        int max_sum = nums[0]; // Initialize max_sum to the first element
-        int curr_sum = nums[0]; // Initialize curr_sum to the first element
-        int left=0;
-        for (int right = 1; right < n; right++) {
-            // Slide the window to the right, expand by adding nums[right]
-            curr_sum += nums[right];
+        int maxi=INT_MIN;
+        int max_so_far=0;
+        for(int i=0;i<nums.size();i++)
+        {
             
-            // Check if we should contract the window from the left
-            while (curr_sum < nums[right]) {
-                curr_sum =curr_sum- nums[left];
-                left++;
-            }
-            
-            // Update max_sum if curr_sum is greater
-            if (curr_sum > max_sum) {
-                max_sum = curr_sum;
-            }
+            max_so_far=max_so_far+nums[i];
+            if(max_so_far>maxi)
+                maxi=max_so_far;
+            if(max_so_far<0)
+                max_so_far=0;
         }
-        
-        return max_sum;
+        return maxi;
     }
 };
 
