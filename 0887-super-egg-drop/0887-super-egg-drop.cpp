@@ -1,36 +1,36 @@
 class Solution {
-   vector<vector<int>>v;
 public:
-    int solve(int k, int n) {
-        if(k==1)
-return n;
-if(n==0 || n==1)
-return n;
-if(v[k][n]!=-1)
-return v[k][n];
-int mini=INT_MAX;
-int l=1,h=n,temp=0;
- while(l<=h)
+    int solve(int k, int f,vector<vector<int>> &dp)
     {
-        int mid=(l+h)/2;
-        int left=solve(k-1,mid-1);  
-        int right=solve(k,n-mid) ;   
-        temp=1+max(left,right);          
-        if(left<right){                 
-          l=mid+1;                       
+        if(f==0||f==1||k==1)
+            return dp[k][f]=f;
+        if(dp[k][f]!=-1)
+            return dp[k][f];
+        int low=1;
+        int high=f;
+        int mn = INT_MAX;
+        while(low<=high)
+        {
+            int mid = low + (high - low) / 2;
+            
+            int left = solve(k-1, mid-1,dp);
+            int right = solve(k, f-mid,dp);
+            
+            int temp=1+max(left,right);
+            
+            if(left < right) 
+                low = mid+1;
+            else 
+                high = mid-1;   
+            mn = min(mn, temp);
         }
-        else                            
-        {    
-            h=mid-1;
-        }
-    mini=min(mini,temp);             
-    }
-    
-    return  v[k][n]=mini;
+        
+        return dp[k][f]=mn;
+        
     }
     
     int superEggDrop(int k, int n) {
-      v.resize(k + 1,vector<int>(n+1,-1));
-   return solve(k,n);
+        vector<vector<int>> dp(k+1,vector<int>(n+1,-1));
+        return solve(k,n,dp);
     }
 };
