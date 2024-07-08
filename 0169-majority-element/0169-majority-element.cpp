@@ -1,18 +1,33 @@
 class Solution {
 public:
+    //Moore Voting Algorithm
     int majorityElement(vector<int>& nums) {
-        unordered_map<int, int> mpp;
-        int maxCount = 0;
-        int majorityElement = 0;
-
-        for (int i = 0; i < nums.size(); i++) {
-            mpp[nums[i]]++;
-            if (mpp[nums[i]] > maxCount) {
-                maxCount = mpp[nums[i]];
-                majorityElement = nums[i];
+        int num;
+        int cnt=0;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(cnt==0)
+            {
+                cnt=1;
+                num=nums[i];
             }
+            else if(nums[i]==num)
+                cnt++;
+            else
+                cnt--;
         }
-
-        return majorityElement;
+        
+        int sum=0;
+        
+        for(int i=0;i<nums.size();i++)
+        {
+           if(nums[i]==num)
+               sum++;
+        }
+        
+        if(sum>=nums.size()/2)
+            return num;
+        
+        return -1;
     }
 };
