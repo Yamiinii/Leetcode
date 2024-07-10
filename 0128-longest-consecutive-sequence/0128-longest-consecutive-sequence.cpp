@@ -17,7 +17,7 @@ public:
                 cnt+=1;
                 lastSmaller=nums[i];
             }
-            else if(nums[i]!=lastSmaller)
+            else if(nums[i]!=lastSmaller)//important
             {
                 cnt=1;
                 lastSmaller=nums[i];
