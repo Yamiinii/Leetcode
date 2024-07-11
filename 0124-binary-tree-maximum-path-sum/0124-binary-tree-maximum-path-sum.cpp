@@ -11,25 +11,22 @@
  */
 class Solution {
 public:
-      int res=INT_MIN;
-    //Function to return maximum path sum from any node in a tree.
-    int solve(TreeNode* root)
+    int maxPath(TreeNode* root,int& maxi)
     {
         if(root==NULL)
-        return 0;
+            return 0;
+        int leftsum=max(0,maxPath(root->left,maxi));
+        int rightsum=max(0,maxPath(root->right,maxi));
         
-        int left = max(0, solve(root->left));//path ending at left
-        int right = max(0, solve(root->right));//path ending at right
-        //ending at root(current)
-        int temp = max(root->val, max(left, right) + root->val);
-        //path including current;passing through
-        int ans=max(temp,left+right+root->val);
-        
-        res=max(res,ans);
-        return temp;
+        maxi=max(maxi,leftsum+rightsum+root->val);
+        return root->val+max(leftsum,rightsum);
     }
+    
     int maxPathSum(TreeNode* root) {
-        solve(root);
-         return res;
+        if(root==NULL)
+            return 0;
+        int maxi=INT_MIN;
+        maxPath(root,maxi);
+        return maxi;
     }
 };
