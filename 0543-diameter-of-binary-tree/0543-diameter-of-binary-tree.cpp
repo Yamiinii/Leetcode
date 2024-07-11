@@ -11,6 +11,8 @@
  */
 class Solution {
 public:
+    // **********888888888888883uqrwidoasxz------  
+    //     we are using only left height and only right height by not adding one
     int height(TreeNode* root) {
         if (root == nullptr)
             return 0;
