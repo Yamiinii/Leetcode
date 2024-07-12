@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    TreeNode* buildTree(vector<int>& preorder,int prestart,int preend, vector<int>& inorder,int inStart,int inEnd,unordered_map<int,int> &mpp)
+    TreeNode* buildTree(vector<int>& preorder,int prestart,int preend, vector<int>& inorder,int inStart,int inEnd,unordered_map<int,int> &mpp)//passing mpp by refernce helped solving TLE
     {
         if(inStart>inEnd || prestart>preend)
             return NULL;
