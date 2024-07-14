@@ -9,24 +9,33 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
 class Solution {
 public:
-    int kthSmallest(TreeNode* root, int k) {
-        int count = countNodes(root->left) + 1; // Count of nodes in the left subtree + 1 (current node)
-        
-        if (k == count) {
-            return root->val; // The kth smallest element is the current node's value
-        } else if (k < count) {
-            return kthSmallest(root->left, k); // The kth smallest element is in the left subtree
-        } else {
-            return kthSmallest(root->right, k - count); // The kth smallest element is in the right subtree
+    // Inorder traversal to find the k-th smallest element
+    int inorder(TreeNode* root, int k, int &cnt) {
+        if (root == NULL) {
+            return -1; // Return a sentinel value for not found
         }
+        
+        // Traverse the left subtree
+        int left = inorder(root->left, k, cnt);
+        if (left != -1) return left; // If found in left subtree, return it
+        
+        // Increment count
+        cnt++;
+        
+        // Check if current node is the k-th smallest
+        if (cnt == k) {
+            return root->val; // Return the value of the k-th smallest node
+        }
+        
+        // Traverse the right subtree
+        return inorder(root->right, k, cnt);
     }
     
-    int countNodes(TreeNode* node) {
-        if (node == nullptr) {
-            return 0;
-        }
-        return 1 + countNodes(node->left) + countNodes(node->right);
+    int kthSmallest(TreeNode* root, int k) {
+        int cnt = 0;
+        return inorder(root, k, cnt);
     }
 };
