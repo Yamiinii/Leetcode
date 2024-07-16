@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //////////////////////////check LL 2 as well
     bool hasCycle(ListNode *head) {
         if (!head || !head->next) {
             return false; // No cycle if the list is empty or has only one node.
