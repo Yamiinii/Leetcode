@@ -50,6 +50,8 @@ ListNode* reverseK(ListNode *head, int n,int i,int k)
         if(head==NULL || head->next==NULL)
 	return head;
       int len=length(head);
+      // if(len%k==0)
+      //     return head;
       int num=len/k;
       
 	int i=0;
