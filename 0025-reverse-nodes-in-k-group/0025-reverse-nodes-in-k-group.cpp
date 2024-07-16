@@ -39,7 +39,7 @@ ListNode* reverseK(ListNode *head, int n,int i,int k)
 		count++;
 	}
 
-	if(next!=NULL)
+	if(curr!=NULL)
 	{
 		head->next=reverseK(next,n,++i,k);
 	}
