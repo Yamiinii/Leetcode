@@ -16,11 +16,11 @@ public:
                 }
                 else if(st.top()=='(')
                     st.pop();
-                else
-                {
-                        cnt++;
-                    continue;
-                }
+                // else
+                // {
+                //         cnt++;
+                //     continue;
+                // }
                     
             }
         }
