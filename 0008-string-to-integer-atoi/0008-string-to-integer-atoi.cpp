@@ -1,31 +1,32 @@
 class Solution {
 public:
     int myAtoi(string s) {
-       bool positive = true; // Default to positive
-        int result = 0;
-
-        int i = 0;
-        while (i < s.length() && s[i] == ' ') {
+       int i=0;
+        int sign=1;
+        long ans=0;
+        while(i<s.length() && s[i]==' ')
+            i++;
+        if(s[i]=='-')
+        {
+            sign=-1;
             i++;
         }
-
-        if (i < s.length() && (s[i] == '+' || s[i] == '-')) {
-            positive = (s[i] == '+');
+        else if(s[i]=='+')
             i++;
-        }
-
-        while (i < s.length() && isdigit(s[i])) {
-            int digit = s[i] - '0';
-            
-            // Check for integer overflow
-            if (result > INT_MAX / 10 || (result == INT_MAX / 10 && digit > 7)) {
-                return (positive) ? INT_MAX : INT_MIN;
+        while(i<s.length())
+        {
+            if(s[i]>='0' && s[i]<='9')
+            {
+                ans=ans*10+(s[i]-'0');
+                if(ans>INT_MAX && sign==-1)
+                    return INT_MIN;
+                else if(ans>INT_MAX && sign==1)
+                    return INT_MAX;
+                i++;
             }
-
-            result = result * 10 + digit;
-            i++;
+            else
+                return ans*sign;
         }
-
-        return (positive) ? result : -result;
+        return (ans*sign);
     }
 };
