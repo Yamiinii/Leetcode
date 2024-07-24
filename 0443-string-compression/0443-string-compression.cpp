@@ -1,5 +1,10 @@
 class Solution {
 public:
+    // while (num > 0) {
+    //     char digit = '0' + num % 10;
+    //     result = digit + result;  // Append digit to result
+    //     num /= 10;  // Move to next digit
+    // }
     int compress(vector<char>& chars) {
         int n=chars.size();
         int i=0;
