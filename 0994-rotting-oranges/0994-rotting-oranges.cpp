@@ -1,55 +1,64 @@
 class Solution {
 public:
     int orangesRotting(vector<vector<int>>& grid) {
-        int m = grid.size();
-        int n = grid[0].size();
-        int total = 0;
-        int rotten = 0;
+        int n = grid.size();
+        int m = grid[0].size();
         int time = 0;
         queue<pair<int, int>> q;
+        int freshCount = 0;  // Count of fresh oranges
         
-        // Calculate total oranges and push all initial rotten oranges into the queue
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (grid[i][j] != 0) {
-                    total++;
-                }
+        // Push all initial rotten oranges into the queue
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
                 if (grid[i][j] == 2) {
                     q.push({i, j});
-                    rotten++; // Increment rotten count for initial rotten oranges
+                } else if (grid[i][j] == 1) {
+                    freshCount++;
                 }
             }
         }
         
-        // Directions for up, down, left, right movements
-        int x[4] = {1, -1, 0, 0};
-        int y[4] = {0, 0, 1, -1};
+        // If there are no fresh oranges initially, return 0
+        if (freshCount == 0) {
+            return 0;
+        }
+        
+        int xi[4] = {0, 0, 1, -1};
+        int yi[4] = {1, -1, 0, 0};
         
         while (!q.empty()) {
-            int k = q.size(); // Number of oranges in the current level of BFS
+            int size = q.size();
+            bool changed = false;  // Flag to check if any oranges were rotten in this round
             
-            while (k--) {
-                int i = q.front().first;
-                int j = q.front().second;
+            for (int k = 0; k < size; k++) {
+                int x = q.front().first;
+                int y = q.front().second;
                 q.pop();
                 
-                for (int idx = 0; idx < 4; idx++) {
-                    int ni = i + x[idx];
-                    int nj = j + y[idx];
+                for (int i = 0; i < 4; i++) {
+                    int x_n = x + xi[i];
+                    int y_n = y + yi[i];
                     
-                    if (ni < 0 || nj < 0 || ni >= m || nj >= n || grid[ni][nj] != 1) continue;
-                    
-                    grid[ni][nj] = 2;
-                    q.push({ni, nj});
-                    rotten++; // Increment rotten count for newly affected oranges
+                    // Check if the neighboring cell is within bounds and is a fresh orange
+                    if (x_n >= 0 && x_n < n && y_n >= 0 && y_n < m && grid[x_n][y_n] == 1) {
+                        grid[x_n][y_n] = 2;  // Mark the fresh orange as rotten
+                        q.push({x_n, y_n});  // Push it to the queue for the next round
+                        freshCount--;        // Decrement the count of fresh oranges
+                        changed = true;      // Set changed flag to true
+                    }
                 }
             }
             
-            if (!q.empty()) {
-                time++; // Increment time after processing each level of BFS
+            if (changed) {
+                time++;  // Increment time only if there were changes (oranges were rotten)
             }
         }
         
-        return total == rotten ? time : -1; // Return time taken or -1 if not all oranges are rotten
+        // If there are still fresh oranges left, return -1
+        if (freshCount > 0) {
+            return -1;
+        }
+        
+        return time;
     }
 };
