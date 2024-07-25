@@ -13,30 +13,30 @@ class Solution {
 public:
     vector<int> rightSideView(TreeNode* root) {
         vector<int> ans;
-        if (!root) {
+        if(root==NULL)
             return ans;
-        }
-
         queue<TreeNode*> q;
         q.push(root);
-
-        while (!q.empty()) {
-            int levelSize = q.size();
-            for (int i = 0; i < levelSize; i++) {
-                TreeNode* node = q.front();
+        while(!q.empty())
+        {
+            int lvlsize=q.size();
+            for(int i=0;i<lvlsize;i++)
+            {
+                TreeNode* front=q.front();
                 q.pop();
-                if (i == levelSize - 1) {
-                    ans.push_back(node->val); // Add the rightmost element at this level.
+                if(i==lvlsize-1)
+                {
+                    ans.push_back(front->val);
                 }
-                if (node->left) {
-                    q.push(node->left);
+                
+                 if (front->left) {
+                    q.push(front->left);
                 }
-                if (node->right) {
-                    q.push(node->right);
+                if (front->right) {
+                    q.push(front->right);
                 }
             }
         }
-
         return ans;
     }
 };
