@@ -11,17 +11,35 @@
  */
 class Solution {
 public:
-    // **********888888888888883uqrwidoasxz------  
-    //     we are using only left height and only right height by not adding one
-    int height(TreeNode* root) {
-        if (root == nullptr)
-            return 0;
-        int l = height(root->left);
-        int r = height(root->right);
-        return max(l, r) + 1;
-    }
+// pair<int ,int>diameterfast( TreeNode*root){
+//      if(root==NULL){
+//          pair<int,int>p=make_pair(0,0);
+//             return p;
+//         }
+//         pair<int ,int>left=diameterfast(root->left);
+//         pair<int ,int>right=diameterfast(root->right);
+        
+//         int op1=left.first;
+//         int op2=right.first;
+//         int op3=left.second+right.second+1;
+        
+//         pair<int,int>ans;
+        
+//       ans.first =max(op1,max(op2,op3));
+//       ans.second=max(left.second,right.second)+1;
     
-    int diameterOfBinaryTree(TreeNode* root) {
+//         return ans;
+// }
+    
+    int height(TreeNode* root)
+    {
+if(root==NULL)
+        return 0;
+        
+        return max(height(root->left),height(root->right))+1;
+        }
+    
+int diameterOfBinaryTree(TreeNode* root) {
         if (root == nullptr)
             return 0;
         int l = diameterOfBinaryTree(root->left);
