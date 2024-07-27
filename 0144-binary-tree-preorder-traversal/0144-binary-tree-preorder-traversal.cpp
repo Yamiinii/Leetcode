@@ -11,21 +11,26 @@
  */
 class Solution {
 public:
-    
-   void trav(TreeNode* root, vector<int>& v)
-    {
-        if (root == nullptr) {
-            return;
-        }
-        
-        v.push_back(root->val);
-        trav(root->left, v);
-        trav(root->right, v);
-    }
-    
     vector<int> preorderTraversal(TreeNode* root) {
-        vector<int> result;
-        trav(root, result);
-        return result;
+        
+        vector<int> ans;
+         if (!root) return ans;
+        stack<TreeNode*> st;
+        st.push(root);
+        while(!st.empty())
+        {
+           TreeNode* node = st.top();
+            st.pop();
+            ans.push_back(node->val);
+            
+            // Push right child first so that the left child is processed first
+            if (node->right) {
+                st.push(node->right);
+            }
+            if (node->left) {
+                st.push(node->left);
+            }
+        }
+        return ans;
     }
 };
