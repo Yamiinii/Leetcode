@@ -1,44 +1,40 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
-class Solution {
-private:
-    void dfs(TreeNode* root, long long targetSum, int& count, unordered_map<long long, int>& mp, long long sum) {
-        if (root == nullptr) {
-            return;
-        }
-        
-        sum += root->val;
-        
-        if (sum == targetSum) {
-            count++;
-        }
-        
-        if (mp.find(sum - targetSum) != mp.end()) {
-            count += mp[sum - targetSum];
-        }
-        
-        mp[sum]++;
-        
-        dfs(root->left, targetSum, count, mp, sum);
-        dfs(root->right, targetSum, count, mp, sum);
-        
-        mp[sum]--;
-    }
+#include <unordered_map>
 
+class Solution {
 public:
+    // Helper function to perform DFS and count paths with the given sum
+    void dfs(TreeNode* root, int target, std::unordered_map<long long, int>& mpp, long long currentSum, int& cnt) {
+        if (!root) return;
+
+        // Update the current path sum
+        currentSum += root->val;
+
+        // Check if the current path sum equals the target
+        if (currentSum == target) {
+            cnt++;
+        }
+
+        // Check if there is a prefix sum that gives the required sum
+        if (mpp.find(currentSum - target) != mpp.end()) {
+            cnt += mpp[currentSum - target];
+        }
+
+        // Update the prefix sum map with the current path sum
+        mpp[currentSum]++;
+
+        // Recurse to left and right subtrees
+        dfs(root->left, target, mpp, currentSum, cnt);
+        dfs(root->right, target, mpp, currentSum, cnt);
+
+        // Backtrack: remove the current path sum from the map
+        mpp[currentSum]--;
+    }
+    
+    // Main function to count the number of paths with sum equal to targetSum
     int pathSum(TreeNode* root, int targetSum) {
-        int count = 0;
-        unordered_map<long long, int> mp;
-        dfs(root, targetSum, count, mp, 0);
-        return count;
+        std::unordered_map<long long, int> mpp;
+        int cnt = 0;
+        dfs(root, targetSum, mpp, 0, cnt);
+        return cnt;
     }
 };
