@@ -1,6 +1,8 @@
 #include <string>
-#include <queue>
 #include <sstream>
+#include <queue>
+#include <utility>
+
 using namespace std;
 
 /**
@@ -12,42 +14,66 @@ using namespace std;
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-
 class Codec {
 public:
-    // Encodes a tree to a single string.
+    // Serialize the binary tree to a string
     string serialize(TreeNode* root) {
-        if (root == nullptr) {
-            return "null,";
+        if (!root) {
+            return "";
         }
 
-        string s = to_string(root->val) + ","; // Append the root value
-        s += serialize(root->left);  // Serialize the left subtree
-        s += serialize(root->right); // Serialize the right subtree
-        return s; // Return the complete serialized string
+        stringstream ss;
+        queue<TreeNode*> q;
+        q.push(root);
+        while (!q.empty()) {
+            TreeNode* curNode = q.front();
+            q.pop();
+            if (curNode == nullptr) {
+                ss << "#,";
+            } else {
+                ss << curNode->val << ",";
+                q.push(curNode->left);
+                q.push(curNode->right);
+            }
+        }
+        return ss.str();
     }
 
-    TreeNode* deserialize_helper(queue<string> &q) {
-        string s = q.front();
-        q.pop();
-        if (s == "null") return nullptr; // Use "null" for consistency with serialize
-        TreeNode* root = new TreeNode(stoi(s));
-        root->left = deserialize_helper(q);
-        root->right = deserialize_helper(q);
-        return root;
-    }
-
-    // Decodes your encoded data to tree.
+    // Deserialize the string to a binary tree
     TreeNode* deserialize(string data) {
-        queue<string> q;
-        stringstream ss(data);
-        string s;
-
-        while (getline(ss, s, ',')) { // Split by comma
-            q.push(s);
+        if (data.empty()) {
+            return nullptr;
         }
 
-        return deserialize_helper(q);
+        stringstream ss(data);
+        string str;
+        getline(ss, str, ',');
+        if (str == "#") {
+            return nullptr;
+        }
+        
+        TreeNode* root = new TreeNode(stoi(str));
+        queue<TreeNode*> q;
+        q.push(root);
+        
+        while (!q.empty()) {
+            TreeNode* node = q.front();
+            q.pop();
+            
+            getline(ss, str, ',');
+            if (str != "#") {
+                node->left = new TreeNode(stoi(str));
+                q.push(node->left);
+            }
+            
+            getline(ss, str, ',');
+            if (str != "#") {
+                node->right = new TreeNode(stoi(str));
+                q.push(node->right);
+            }
+        }
+        
+        return root;
     }
 };
 
