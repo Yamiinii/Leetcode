@@ -1,31 +1,26 @@
-class Node
-{
-        public:
+class Node{
+    public:
     Node* links[26];
     bool flag=false;
     
-    bool containsKey(char ch)
-       { return links[ch-'a']!=NULL;}
+    bool isPresent(char ch)
+    {
+        return links[ch-'a']!=NULL;
+    }
+    
+    Node* get(char ch){
+        return links[ch-'a'];}
     
     void put(char ch,Node* node)
     {
         links[ch-'a']=node;
     }
     
-    Node* get(char ch)
-    {
-            return links[ch-'a'];
-    }
+    bool isend()
+     {   return flag;}
     
-    void setEnd()
-    {
-        flag=true;
-    }
-    
-    bool isEnd()
-    {
-        return flag;
-    }
+    void setend()
+      {  flag=true;}
     
 };
 
@@ -33,7 +28,6 @@ class Trie {
 private:
     Node* root;
 public:
-    
     Trie() {
         root=new Node();
     }
@@ -42,44 +36,41 @@ public:
         Node* node=root;
         for(int i=0;i<word.size();i++)
         {
-            if(!node->containsKey(word[i]))
+            char ch=word[i];
+            if(!node->isPresent(ch))
             {
-                node->put(word[i],new Node());
+                node->put(ch,new Node());
             }
-            
-            node=node->get(word[i]);
+            node=node->get(ch);
         }
-        
-        node->setEnd();
+        node->setend();
     }
     
     bool search(string word) {
-         Node* node=root;
+             Node* node=root;
         for(int i=0;i<word.size();i++)
         {
-            if(!node->containsKey(word[i]))
+            char ch=word[i];
+            if(!node->isPresent(ch))
             {
                 return false;
             }
-            
-            node=node->get(word[i]);
+            node=node->get(ch);
         }
-        
-        return node!=NULL && node->isEnd();
+        return node->isend();
     }
     
     bool startsWith(string word) {
-         Node* node=root;
+             Node* node=root;
         for(int i=0;i<word.size();i++)
         {
-            if(!node->containsKey(word[i]))
+            char ch=word[i];
+            if(!node->isPresent(ch))
             {
                 return false;
             }
-            
-            node=node->get(word[i]);
+            node=node->get(ch);
         }
-        
         return true;
     }
 };
