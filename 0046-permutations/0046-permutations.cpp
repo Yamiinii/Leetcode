@@ -1,29 +1,36 @@
-#include <vector>
-
 class Solution {
 public:
-    void backtrack(vector<int>& nums, int i, vector<int>& marked, vector<int>& v, vector<vector<int>>& ans) {
-        if (i == nums.size()) {
-            ans.push_back(v);
+    void backtrack(vector<int>& nums, vector<int>& curr,  vector<vector<int>> &ans,vector<bool>& visited,int i,int n)
+    {
+        if(i==n)
+        {
+            ans.push_back(curr);
             return;
         }
         
-        for (int j = 0; j < nums.size(); j++) {
-            if (marked[j] == 0) {
-                v.push_back(nums[j]);
-                marked[j] = 1;
-                backtrack(nums, i + 1, marked, v, ans);
-                v.pop_back();
-                marked[j] = 0;
-            }
+        for(int j=0;j<n;j++)
+        {
+        if (visited[j]) continue; // Skip if already visited
+            
+            curr.push_back(nums[j]);
+            visited[j] = true;
+
+            // Recurse with the current element included
+                    backtrack(nums,curr,ans,visited,i+1,n);
+
+            // Backtrack: remove the last element and mark it as unvisited
+            curr.pop_back();
+            visited[j] = false;
         }
+        
     }
     
     vector<vector<int>> permute(vector<int>& nums) {
+        vector<int> curr;
         vector<vector<int>> ans;
-        vector<int> v;
-        vector<int> marked(nums.size(), 0);
-        backtrack(nums, 0, marked, v, ans);
+        int n=nums.size();
+         vector<bool> visited(nums.size(), false);
+        backtrack(nums,curr,ans,visited,0,n);
         return ans;
     }
 };
