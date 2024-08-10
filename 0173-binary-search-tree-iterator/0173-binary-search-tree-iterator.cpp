@@ -10,26 +10,29 @@
  * };
  */
 class BSTIterator {
-private:
-    stack<TreeNode*> st; // Use stack of TreeNode pointers
-
-    void stackall(TreeNode* curr) {
-        while (curr != nullptr) {
-            st.push(curr);
-            curr = curr->left; // Fix missing semicolon here
+    private:
+        stack<TreeNode*> st;
+public:
+    void stackAll(TreeNode* root)
+    {
+        while(root!=NULL)
+        {
+            st.push(root);
+            root=root->left;
         }
     }
-public:
+    
     BSTIterator(TreeNode* root) {
-        stackall(root);
+        stackAll(root);
     }
     
     int next() {
-       TreeNode * curr=st.top();
+        TreeNode* n=st.top();
         st.pop();
-        if(curr->right)
-            stackall(curr->right);
-        return curr->val;
+        if(n->right)
+            stackAll(n->right);
+        return n->val;
+        
     }
     
     bool hasNext() {
