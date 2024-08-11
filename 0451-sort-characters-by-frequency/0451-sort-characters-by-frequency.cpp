@@ -1,23 +1,33 @@
+#include <string>
+#include <unordered_map>
+#include <queue>
+#include <vector>
+
 class Solution {
 public:
-    string frequencySort(string s) {
-        unordered_map<char,int> freq;
-        vector<string> bucket(s.size()+1, "");
-        string res;
-        
-        //count frequency of each character
-        for(char c:s) freq[c]++;
-        //put character into frequency bucket
-        for(auto& it:freq) {
-            int n = it.second;
-            char c = it.first;
-            bucket[n].append(n, c);
+    std::string frequencySort(std::string s) {
+        int n = s.size();
+        std::unordered_map<char, int> mpp;
+        // Count frequencies of each character
+        for (char ch : s) {
+            mpp[ch]++;
         }
-        //form descending sorted string
-        for(int i=s.size(); i>0; i--) {
-            if(!bucket[i].empty())
-                res.append(bucket[i]);
+
+        // Max-heap based on frequency
+        std::priority_queue<std::pair<int, char>> pq;
+        // Push all characters and their frequencies into the max-heap
+        for (auto& it : mpp) {
+            pq.push({it.second, it.first});
         }
-        return res;
+
+        std::string result;
+        // Build the result string based on the max-heap
+        while (!pq.empty()) {
+            auto p = pq.top();
+            pq.pop();
+            result.append(p.first, p.second); // Append 'p.first' occurrences of 'p.second'
+        }
+
+        return result;
     }
 };
