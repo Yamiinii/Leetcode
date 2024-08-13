@@ -1,30 +1,46 @@
+#include <vector>
+#include <queue>
+using namespace std;
+
 class Solution {
 public:
-bool iscycle(vector<int> adj[], vector<int> &vis, int id) {
-    if (vis[id] == 1)
-        return true;
-    if (vis[id] == 0) {
-        vis[id] = 1;
-        for (auto edge : adj[id]) {
-            if (iscycle(adj, vis, edge))
-                return true;
+    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+        // Initialize adjacency list and indegree vector
+        vector<vector<int>> adj(numCourses);
+        vector<int> indegree(numCourses, 0);
+        
+        // Build the graph and fill indegree
+        for (const auto& prereq : prerequisites) {
+            int u = prereq[1];
+            int v = prereq[0];
+            adj[u].push_back(v);
+            indegree[v]++;
         }
+        
+        // Initialize the queue with nodes having 0 indegree
+        queue<int> q;
+        for (int i = 0; i < numCourses; ++i) {
+            if (indegree[i] == 0) {
+                q.push(i);
+            }
+        }
+        
+        // Perform topological sort
+        vector<int> topo;
+        while (!q.empty()) {
+            int node = q.front();
+            q.pop();
+            topo.push_back(node);
+            
+            for (int neighbor : adj[node]) {
+                indegree[neighbor]--;
+                if (indegree[neighbor] == 0) {
+                    q.push(neighbor);
+                }
+            }
+        }
+        
+        // If the number of nodes in topo is equal to numCourses, it's possible to finish all courses
+        return topo.size() == numCourses;
     }
-    vis[id] = 2;
-    return false;
-}
-
-bool canFinish(int n, vector<vector<int>>& pre) {
-    vector<int> adj[n];
-    for (auto edge : pre)
-        adj[edge[1]].push_back(edge[0]);
-    vector<int> vis(n, 0);
-    
-    for (int i = 0; i < n; i++) {
-        if (iscycle(adj, vis, i))
-            return false;
-    }
-    return true;
-}
-
 };
