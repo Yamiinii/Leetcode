@@ -1,20 +1,31 @@
 class Solution {
 public:
     int characterReplacement(string s, int k) {
+        int n=s.size();
+        int ans=0;
+        for(char c='A';c<='Z';c++)
+        {
+            int i=0,j=0;
+            int count=0;
+            while(j<n)
+            {
+                if(s[j]!=c)
+                    count++;
+                
+                while(count>k)
+                {
+                    ans=max(ans,j-i);
+                    if(s[i]!=c)
+                        count--;
+                    i++;
+                }
+                
+                j++;
+            }
+            
+            ans=max(ans,j-i);
+        }
         
-        int i = 0, ans = 0;
-        int N=s.size();
-        int maxFreq=0;
-        map<int, int> freq;
-for (int j=0; j < N; ++j) {
-    freq[s[j]]++;
-    maxFreq=max(maxFreq,freq[s[j]]);
-    while(j-i+1-maxFreq>k)
-    {
-        freq[s[i++]]--;
-    }
-    ans = max(ans, j - i + 1); // the window [i, j] is the maximum window we've found thus far
-}
-return ans;
+        return ans;
     }
 };
