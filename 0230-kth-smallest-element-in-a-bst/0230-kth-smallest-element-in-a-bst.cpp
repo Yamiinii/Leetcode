@@ -1,41 +1,31 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
-
 class Solution {
 public:
-    // Inorder traversal to find the k-th smallest element
-    int inorder(TreeNode* root, int k, int &cnt) {
-        if (root == NULL) {
-            return -1; // Return a sentinel value for not found
+    // Helper function to perform in-order traversal
+    bool inorder(TreeNode* root, int k, int &cnt, int &result) {
+        if (root == nullptr) {
+            return false;
         }
-        
+
         // Traverse the left subtree
-        int left = inorder(root->left, k, cnt);
-        if (left != -1) return left; // If found in left subtree, return it
-        
-        // Increment count
-        cnt++;
-        
-        // Check if current node is the k-th smallest
-        if (cnt == k) {
-            return root->val; // Return the value of the k-th smallest node
+        if (inorder(root->left, k, cnt, result)) {
+            return true; // If we found the k-th smallest, no need to continue
         }
-        
+
+        // Visit the current node
+        cnt++;
+        if (cnt == k) {
+            result = root->val;
+            return true; // Found the k-th smallest element
+        }
+
         // Traverse the right subtree
-        return inorder(root->right, k, cnt);
+        return inorder(root->right, k, cnt, result);
     }
     
     int kthSmallest(TreeNode* root, int k) {
-        int cnt = 0;
-        return inorder(root, k, cnt);
+        int cnt = 0;    // To keep track of the count of visited nodes
+        int result = 0; // To store the k-th smallest value
+        inorder(root, k, cnt, result);
+        return result;  // Return the k-th smallest value
     }
 };
