@@ -1,28 +1,35 @@
+#include <vector>
+#include <algorithm>
+
 class Solution {
 public:
-    void findall(int idx,vector<int>& candidates, int target,vector<int> &v,vector<vector<int>> &ans)
-    {
+    void rec(const std::vector<int>& candidates, int target, std::vector<std::vector<int>>& ans, std::vector<int> v, int sum, int idx) {
+        if (sum == target) {
+            ans.push_back(v);
+            return;
+        }
 
-        if(idx==candidates.size())
-        {
-            if(target==0)
-                ans.push_back(v);
+        if (sum > target || idx >= candidates.size()) {
             return;
         }
         
-        if(candidates[idx]<=target)
-        {
-            v.push_back(candidates[idx]);
-             findall(idx,candidates,target-candidates[idx],v,ans);
-            v.pop_back();
-        }
-           findall(idx+1,candidates,target,v,ans);
+        // Include the current element
+        v.push_back(candidates[idx]);
+        rec(candidates, target, ans, v, sum + candidates[idx], idx);
+
+        // Exclude the current element and move to the next
+        v.pop_back();
+        rec(candidates, target, ans, v, sum, idx + 1);
     }
     
-    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-        vector<vector<int>> ans;
-        vector<int> v;
-        findall(0,candidates,target,v,ans);
+    std::vector<std::vector<int>> combinationSum(std::vector<int>& candidates, int target) {
+        std::vector<std::vector<int>> ans;
+        std::vector<int> v;
+        
+        // Sort the candidates to handle duplicate combinations more effectively
+        std::sort(candidates.begin(), candidates.end());
+        
+        rec(candidates, target, ans, v, 0, 0);
         return ans;
     }
 };
