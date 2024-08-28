@@ -6,24 +6,23 @@ public:
         for(char c='A';c<='Z';c++)
         {
             int i=0,j=0;
-            int count=0;
+            int cnt=0;
             while(j<n)
             {
                 if(s[j]!=c)
-                    count++;
-                
-                while(count>k)
+                    cnt++;
+                while(cnt>k)
                 {
                     ans=max(ans,j-i);
                     if(s[i]!=c)
-                        count--;
+                        cnt--;
                     i++;
                 }
                 
                 j++;
             }
             
-            ans=max(ans,j-i);
+            ans=max(j-i,ans);
         }
         
         return ans;
