@@ -1,66 +1,61 @@
-class Trie{
-    public:
-    Trie* links[26];
-    bool isword=false;
+class Trie {
+public:
+    Trie* links[26] = {nullptr}; // Initialize the links array with nullptr
+    bool isword = false;
 };
 
 class Solution {
 public:
-    
-    int dir[5]={-1,0,1,0,-1};
-    
-    void addword(Trie* curr,string word)
-    {
-        for(auto ch:word)
-        {
-            if(!curr->links[ch-'a'])
-                curr->links[ch-'a']=new Trie();
-            curr=curr->links[ch-'a'];
+    void addWord(Trie* curr, const string& word) {
+        for (char ch : word) {
+            if (!curr->links[ch - 'a']) {
+                curr->links[ch - 'a'] = new Trie();
+            }
+            curr = curr->links[ch - 'a'];
         }
-        
-        curr->isword=true;
+        curr->isword = true;
     }
     
-    void dfs(vector<string>& ans, string ds, Trie* curr, int i, int j,vector<vector<char>>& board,vector<vector<bool>> &vis)
-    {
-        if(!curr)
-            return;
-        
-        if(curr->isword)
-        {
-            ans.push_back(ds);
-            curr->isword=false;
+    void dfs(vector<vector<char>>& board, vector<vector<bool>>& visited, string& temp, Trie* trie, vector<string>& ans, int i, int j) {
+        if (!trie) return;
+
+        if (trie->isword) {
+            ans.push_back(temp);
+            trie->isword = false; // To avoid adding the same word multiple times
         }
         
-        vis[i][j]=true;
+        visited[i][j] = true;
+        int x[4] = {1, -1, 0, 0};
+        int y[4] = {0, 0, 1, -1};
         
-        for(int del=0;del<4;del++)
-        {
-            int next_i=i+dir[del],next_j=j+dir[del+1];
-            if(next_i<board.size() && next_j<board[0].size() && !vis[next_i][next_j] && curr->links[board[next_i][next_j]-'a'])
-            {
-                dfs(ans, ds + board[next_i][next_j],curr->links[board[next_i][next_j] - 'a'], next_i, next_j,board,vis);
+        for (int k = 0; k < 4; ++k) {
+            int xi = i + x[k];
+            int yi = j + y[k];
+            if (xi >= 0 && xi < board.size() && yi >= 0 && yi < board[0].size() && !visited[xi][yi] && trie->links[board[xi][yi] - 'a']) {
+                temp.push_back(board[xi][yi]);
+                dfs(board, visited, temp, trie->links[board[xi][yi] - 'a'], ans, xi, yi);
+                temp.pop_back(); // Remove the last character after returning from DFS
             }
         }
-         vis[i][j]= false; 
-        
+        visited[i][j] = false;
     }
     
     vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
-        Trie* trie=new Trie();
-        int n=board.size(),m=board[0].size();
-        vector<vector<bool>> visited(n,vector<bool>(m,false));
-        for(auto word:words)
-            addword(trie,word);
-        
+        Trie* root = new Trie();
+        for (const auto& word : words) {
+            addWord(root, word);
+        }
+        int n = board.size();
+        int m = board[0].size();
+        vector<vector<bool>> visited(n, vector<bool>(m, false));
         vector<string> ans;
-        for(int i=0;i<n;i++)
-        {
-            for(int j=0;j<m;j++)
-            {
-                char ch=board[i][j];
-                if(trie->links[ch-'a'])
-                    dfs(ans,string(1,ch),trie->links[ch-'a'],i,j,board,visited);
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < m; ++j) {
+                char ch = board[i][j];
+                if (root->links[ch - 'a']) {
+                    string temp(1, ch);
+                    dfs(board, visited, temp, root->links[ch - 'a'], ans, i, j);
+                }
             }
         }
         return ans;
