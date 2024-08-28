@@ -3,42 +3,42 @@ public:
     int numBusesToDestination(vector<vector<int>>& routes, int source, int target) {
         if(source==target)
             return 0;
-       vector<vector<int>> v(1e6+1);
+     vector<vector<int>> mpp(1e6+1);
         for(int i=0;i<routes.size();i++)
         {
             for(int j=0;j<routes[i].size();j++)
             {
-                v[routes[i][j]].push_back(i);
+                mpp[routes[i][j]].push_back(i);
             }
         }
         
         queue<int> q;
-        for(int it:v[source])
+        for(auto it:mpp[source])
             q.push(it);
-        
-        vector<int> visitedstation(1e6+1);
-        vector<int> visitedbuses(1e6+1);
-        visitedstation[source]=1;
-        bool reached=false;
         int cnt=0;
+        bool reached=false;
+        vector<bool> visitedstation(1e5+1);
+        vector<bool> visitedbuses(1e5+1);
+        visitedstation[source]=true;
         while(!q.empty())
         {
-            int size=q.size();
+            int sz=q.size();
             cnt++;
-            while(size--)
+            while(sz--)
             {
                 int front=q.front();
                 q.pop();
-                for(int station:routes[front])
+                for(auto it:routes[front])
                 {
-                    if(station==target)
+                    if(it==target)
                     {
                         reached=true;
                         return cnt;
                     }
-                    if(visitedstation[station]==0)
+                    
+                     if(visitedstation[it]==0)
                     {
-                        for(int bus:v[station])
+                        for(int bus:mpp[it])
                         {
                             if(visitedbuses[bus]==0)
                             {
@@ -46,7 +46,7 @@ public:
                                 visitedbuses[bus]=1;
                             }
                         }
-                        visitedstation[station]=1;
+                        visitedstation[it]=1;
                     }
                 }
             }
