@@ -1,22 +1,20 @@
 class Solution {
 public:
-    long long minimumTime(vector<int>& time, int totalTrips) {
+    long long minimumTime(vector<int>& time, int tot) {
         int n=time.size();
-       sort(time.begin(),time.end());
+        sort(time.begin(),time.end());
         long long low=1;
-        long long high = static_cast<long long>(time.back()) * totalTrips;
+        long long high=static_cast<long long>(time.back())*tot;
         while(low<high)
         {
-                  long long mid = low + (high - low) / 2;
-            long long actualTrips = 0;
-             for(int i=0;i<time.size();i++){
-            actualTrips+=mid/time[i];
-                //      if (actualTrips >= totalTrips) {
-                //     break; // No need to continue if we've already met the required number of trips
-                // }
-                 
-        }
-            if(actualTrips<totalTrips)
+            long long mid=low+(high-low)/2;
+            long long actualtrips=0;
+            for(int i=0;i<n;i++)
+            {
+                actualtrips+=mid/time[i];
+            }
+            
+            if(actualtrips<tot)
                 low=mid+1;
             else
                 high=mid;
