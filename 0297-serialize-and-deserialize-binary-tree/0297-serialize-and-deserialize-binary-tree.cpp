@@ -44,7 +44,7 @@ public:
         getline(ss,s,',');
         if(s=="#")
             return NULL;
-          TreeNode* root = new TreeNode(stoi(s));
+        TreeNode* root=new TreeNode(stoi(s));
         queue<TreeNode*> q;
         q.push(root);
         while(!q.empty())
@@ -64,7 +64,6 @@ public:
                 q.push(front->right);
             }
         }
-        
         return root;
     }
 };
