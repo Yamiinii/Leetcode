@@ -12,25 +12,24 @@ public:
 
     // Encodes a tree to a single string.
     string serialize(TreeNode* root) {
-        if(root==nullptr)
+        stringstream ss;
+        if(root==NULL)
             return "";
         queue<TreeNode*> q;
         q.push(root);
-        stringstream ss;
         while(!q.empty())
         {
             TreeNode* front=q.front();
             q.pop();
             if(front==NULL)
-                 ss << "#,";
+                ss<<"#,";
             else
             {
-                ss << front->val << ",";
-                 q.push(front->left);
+                ss<<front->val<<",";
+                q.push(front->left);
                 q.push(front->right);
             }
         }
-        
         return ss.str();
     }
 
