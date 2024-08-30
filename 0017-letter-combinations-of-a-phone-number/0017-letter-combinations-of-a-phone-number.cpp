@@ -2,16 +2,16 @@ class Solution {
 public:
     void backtrack(int i,string digits,string path,vector<string> &ans, unordered_map<char,string>& mpp)
     {
-        if(path.size()==digits.size())
-        {
-            ans.push_back(path);
-            return;
-        }
+       if(path.size()==digits.size())
+       {
+           ans.push_back(path);
+           return ;
+       }
         
-         string s = mpp.at(digits[i]);
+        string s=mpp.at(digits[i]);
         for(auto posn:s)
         {
-            backtrack(i+1,digits,path+posn,ans,mpp);
+              backtrack(i+1,digits,path+posn,ans,mpp);
         }
         
     }
