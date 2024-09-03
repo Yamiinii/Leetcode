@@ -1,33 +1,56 @@
+#include <vector>
+#include <queue>
+#include <cmath>
+#include <algorithm>
+using namespace std;
+
 class Solution {
 public:
-    int minimumEffortPath(vector<vector<int>>& heights) {
-        int rows = heights.size(), cols = heights[0].size();
-        vector<vector<int>> dist(rows, vector<int>(cols, INT_MAX));
-        priority_queue<tuple<int, int, int>, vector<tuple<int, int, int>>, greater<>> minHeap;
-        minHeap.emplace(0, 0, 0);
+    int minimumEffortPath(vector<vector<int>>& grid) {
+        int n = grid.size();
+        int m = grid[0].size();
+        vector<vector<int>> dist(n, vector<int>(m, INT_MAX));
         dist[0][0] = 0;
-        
-        int directions[4][2] = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
-        
-        while (!minHeap.empty()) {
-            auto [effort, x, y] = minHeap.top();
-            minHeap.pop();
+
+        // Directions for 4 possible moves (down, up, right, left)
+        int x[4] = {1, -1, 0, 0};
+        int y[4] = {0, 0, 1, -1};
+
+        // Min-heap priority queue (effort, x, y)
+        priority_queue<tuple<int, int, int>, vector<tuple<int, int, int>>, greater<>> pq;
+        pq.emplace(0, 0, 0); // (effort, x, y)
+
+        while (!pq.empty()) {
+            auto [currentEffort, xi, yi] = pq.top();
+            pq.pop();
             
-            if (effort > dist[x][y]) continue;
+            // If we have reached the bottom-right cell, return the effort
+            if (xi == n - 1 && yi == m - 1) {
+                return currentEffort;
+            }
             
-            if (x == rows - 1 && y == cols - 1) return effort;
+            // Skip processing if the current path is not optimal
+            if (currentEffort > dist[xi][yi]) continue;
             
-            for (auto& dir : directions) {
-                int nx = x + dir[0], ny = y + dir[1];
-                if (nx >= 0 && nx < rows && ny >= 0 && ny < cols) {
-                    int new_effort = max(effort, abs(heights[x][y] - heights[nx][ny]));
-                    if (new_effort < dist[nx][ny]) {
-                        dist[nx][ny] = new_effort;
-                        minHeap.emplace(new_effort, nx, ny);
+            // Explore all 4 possible directions
+            for (int i = 0; i < 4; ++i) {
+                int nx = xi + x[i];
+                int ny = yi + y[i];
+
+                if (nx >= 0 && nx < n && ny >= 0 && ny < m) {
+                    // Calculate the effort to move to the new cell
+                    int newEffort = max(currentEffort, abs(grid[nx][ny] - grid[xi][yi]));
+
+                    // Update distance if a better path is found
+                    if (newEffort < dist[nx][ny]) {
+                        dist[nx][ny] = newEffort;
+                        pq.emplace(newEffort, nx, ny);
                     }
                 }
             }
         }
+
+        // If no path found, return -1 (shouldn't reach here for valid input)
         return -1;
     }
 };
