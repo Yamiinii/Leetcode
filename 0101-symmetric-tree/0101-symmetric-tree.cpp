@@ -9,24 +9,21 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-
- //********************************this is not optimal...see first one only***************
 class Solution {
 public:
-    bool isSym(TreeNode* Left,TreeNode* Right)
+    bool isMirror(TreeNode* t1, TreeNode* t2)
     {
-        if(Left==NULL || Right==NULL)
-            return Left==Right;
-        if(Left->val!=Right->val)
-            return false;
-        
-        return isSym(Left->left,Right->right) && isSym(Left->right , Right->left);
-    }
-    
-    bool isSymmetric(TreeNode* root) { 
-        if (root == nullptr)
+        if(!t1 && !t2)
             return true;
         
-        return isSym(root->left,root->right);
+        if(!t1 || !t2)
+            return false;
+        
+        return (t1->val==t2->val) && isMirror(t1->left,t2->right) && isMirror(t1->right,t2->left);
+    }
+    
+    bool isSymmetric(TreeNode* root) {
+        if (!root) return true;
+        return isMirror(root->left, root->right);
     }
 };
