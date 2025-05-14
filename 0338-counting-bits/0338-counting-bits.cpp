@@ -1,46 +1,26 @@
 class Solution {
 public:
-
-    int solve(int n,vector<int>&dp)
+    int func(int i)
     {
-
-
-        if(dp[n]!=-1)
+        int ans=0;
+        while(i)
         {
-            
-            return dp[n];
+            if(i & 1)
+            ans+=1;
+
+            i=i>>1;
         }
 
-        int a = 0,b=0;
-        if(n%2==0)
-        {
-            a+=solve(n/2,dp);
-            dp[n]=a;
-        }
-        else
-        {
-            b+=(1 + solve(n/2,dp));
-            dp[n]=b;
-        }
-    return  dp[n];
+        return ans;
     }
-
 
     vector<int> countBits(int n) {
-        vector<int>dp(n+1,-1);
-        dp[0]=0;
-        if(n!=0)
+        vector<int> v(n+1,0);
+        for(int i=1;i<n+1;i++)
         {
-             dp[1]=1;
+            v[i]=func(i);
         }
-       
 
-    for(int i=n; i>=0 ;i--)
-    {
-         int a =  solve(i,dp);
-         dp[i]=a;
-    }
-     
-        return dp;
+        return v;
     }
 };
