@@ -15,6 +15,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0268-missing-number](https://github.com/Yamiinii/Leetcode/tree/master/0268-missing-number) |
 | [0435-non-overlapping-intervals](https://github.com/Yamiinii/Leetcode/tree/master/0435-non-overlapping-intervals) |
 | [0925-construct-binary-tree-from-preorder-and-postorder-traversal](https://github.com/Yamiinii/Leetcode/tree/master/0925-construct-binary-tree-from-preorder-and-postorder-traversal) |
+| [1036-rotting-oranges](https://github.com/Yamiinii/Leetcode/tree/master/1036-rotting-oranges) |
 ## Binary Search
 |  |
 | ------- |
@@ -44,6 +45,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0207-course-schedule](https://github.com/Yamiinii/Leetcode/tree/master/0207-course-schedule) |
 | [0226-invert-binary-tree](https://github.com/Yamiinii/Leetcode/tree/master/0226-invert-binary-tree) |
 | [0297-serialize-and-deserialize-binary-tree](https://github.com/Yamiinii/Leetcode/tree/master/0297-serialize-and-deserialize-binary-tree) |
+| [1036-rotting-oranges](https://github.com/Yamiinii/Leetcode/tree/master/1036-rotting-oranges) |
 ## Binary Tree
 |  |
 | ------- |
@@ -133,4 +135,8 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0191-number-of-1-bits](https://github.com/Yamiinii/Leetcode/tree/master/0191-number-of-1-bits) |
 | [0268-missing-number](https://github.com/Yamiinii/Leetcode/tree/master/0268-missing-number) |
 | [0338-counting-bits](https://github.com/Yamiinii/Leetcode/tree/master/0338-counting-bits) |
+## Matrix
+|  |
+| ------- |
+| [1036-rotting-oranges](https://github.com/Yamiinii/Leetcode/tree/master/1036-rotting-oranges) |
 <!---LeetCode Topics End-->
