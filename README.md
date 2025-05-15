@@ -58,6 +58,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## String
 |  |
 | ------- |
+| [0044-wildcard-matching](https://github.com/Yamiinii/Leetcode/tree/master/0044-wildcard-matching) |
 | [0297-serialize-and-deserialize-binary-tree](https://github.com/Yamiinii/Leetcode/tree/master/0297-serialize-and-deserialize-binary-tree) |
 ## Design
 |  |
@@ -89,6 +90,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Dynamic Programming
 |  |
 | ------- |
+| [0044-wildcard-matching](https://github.com/Yamiinii/Leetcode/tree/master/0044-wildcard-matching) |
 | [0070-climbing-stairs](https://github.com/Yamiinii/Leetcode/tree/master/0070-climbing-stairs) |
 | [0121-best-time-to-buy-and-sell-stock](https://github.com/Yamiinii/Leetcode/tree/master/0121-best-time-to-buy-and-sell-stock) |
 | [0338-counting-bits](https://github.com/Yamiinii/Leetcode/tree/master/0338-counting-bits) |
@@ -96,6 +98,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Greedy
 |  |
 | ------- |
+| [0044-wildcard-matching](https://github.com/Yamiinii/Leetcode/tree/master/0044-wildcard-matching) |
 | [0435-non-overlapping-intervals](https://github.com/Yamiinii/Leetcode/tree/master/0435-non-overlapping-intervals) |
 ## Sorting
 |  |
@@ -139,4 +142,8 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [1036-rotting-oranges](https://github.com/Yamiinii/Leetcode/tree/master/1036-rotting-oranges) |
+## Recursion
+|  |
+| ------- |
+| [0044-wildcard-matching](https://github.com/Yamiinii/Leetcode/tree/master/0044-wildcard-matching) |
 <!---LeetCode Topics End-->
