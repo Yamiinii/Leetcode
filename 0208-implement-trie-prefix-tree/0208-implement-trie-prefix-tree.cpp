@@ -1,32 +1,30 @@
 class Node{
-    public:
     Node* links[26];
     bool flag=false;
-    
+    public:
     bool isPresent(char ch)
     {
-        return links[ch-'a']!=NULL;
+        return links[ch-'a'];
     }
-    
-    Node* get(char ch){
-        return links[ch-'a'];}
-    
+
     void put(char ch,Node* node)
     {
         links[ch-'a']=node;
     }
-    
-    bool isend()
-     {   return flag;}
-    
-    void setend()
-      {  flag=true;}
-    
+
+    Node* get(char ch)
+    {return links[ch-'a'];}
+
+    bool isEnd()
+    {return flag;}
+
+    void setEnd()
+    {flag=true;}
 };
 
 class Trie {
 private:
-    Node* root;
+Node* root;
 public:
     Trie() {
         root=new Node();
@@ -38,39 +36,35 @@ public:
         {
             char ch=word[i];
             if(!node->isPresent(ch))
-            {
-                node->put(ch,new Node());
-            }
+            node->put(ch,new Node());
             node=node->get(ch);
         }
-        node->setend();
+        node->setEnd();
     }
     
     bool search(string word) {
-             Node* node=root;
+        Node* node=root;
         for(int i=0;i<word.size();i++)
         {
             char ch=word[i];
             if(!node->isPresent(ch))
-            {
-                return false;
-            }
+            return false;
             node=node->get(ch);
         }
-        return node->isend();
+
+        return node->isEnd();
     }
     
     bool startsWith(string word) {
-             Node* node=root;
+           Node* node=root;
         for(int i=0;i<word.size();i++)
         {
             char ch=word[i];
             if(!node->isPresent(ch))
-            {
-                return false;
-            }
+            return false;
             node=node->get(ch);
         }
+
         return true;
     }
 };
