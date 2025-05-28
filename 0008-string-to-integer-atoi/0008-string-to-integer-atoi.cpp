@@ -1,32 +1,42 @@
 class Solution {
 public:
     int myAtoi(string s) {
-       int i=0;
-        int sign=1;
-        long ans=0;
-        while(i<s.length() && s[i]==' ')
-            i++;
-        if(s[i]=='-')
+        //check for white space
+        //check for sign
+        //skip all zeroes
+        //stop if a non digit is encountered
+        //check if the numbers are in range
+        int n=s.size();
+        int i=0;
+        // don't forget i<n
+        while(i<n && s[i]==' ')
+        i++;
+        bool positive=true;
+        if(s[i]=='+' || s[i]=='-')
         {
-            sign=-1;
+            positive=(s[i]=='+');
             i++;
         }
-        else if(s[i]=='+')
-            i++;
-        while(i<s.length())
+        while(i < n && s[i] == '0')
+             i++;
+
+        //using long long for overflow check
+        long long num=0;
+        while(i<n && isdigit(s[i]))
         {
-            if(s[i]>='0' && s[i]<='9')
+            int digit=s[i]-'0';
+            num=num*10+digit;
+
+            if(positive && num>INT_MAX)
+            return INT_MAX;
+
+            if(!positive && -num<INT_MIN)
             {
-                ans=ans*10+(s[i]-'0');
-                if(ans>INT_MAX && sign==-1)
-                    return INT_MIN;
-                else if(ans>INT_MAX && sign==1)
-                    return INT_MAX;
-                i++;
+                return INT_MIN;
             }
-            else
-                return ans*sign;
+            i++;
         }
-        return (ans*sign);
+
+        return positive?num:-num;
     }
 };
