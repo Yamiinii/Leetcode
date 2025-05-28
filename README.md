@@ -7,6 +7,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0001-two-sum](https://github.com/Yamiinii/Leetcode/tree/master/0001-two-sum) |
+| [0015-3sum](https://github.com/Yamiinii/Leetcode/tree/master/0015-3sum) |
 | [0033-search-in-rotated-sorted-array](https://github.com/Yamiinii/Leetcode/tree/master/0033-search-in-rotated-sorted-array) |
 | [0105-construct-binary-tree-from-preorder-and-inorder-traversal](https://github.com/Yamiinii/Leetcode/tree/master/0105-construct-binary-tree-from-preorder-and-inorder-traversal) |
 | [0121-best-time-to-buy-and-sell-stock](https://github.com/Yamiinii/Leetcode/tree/master/0121-best-time-to-buy-and-sell-stock) |
@@ -109,6 +110,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Sorting
 |  |
 | ------- |
+| [0015-3sum](https://github.com/Yamiinii/Leetcode/tree/master/0015-3sum) |
 | [0215-kth-largest-element-in-an-array](https://github.com/Yamiinii/Leetcode/tree/master/0215-kth-largest-element-in-an-array) |
 | [0268-missing-number](https://github.com/Yamiinii/Leetcode/tree/master/0268-missing-number) |
 | [0435-non-overlapping-intervals](https://github.com/Yamiinii/Leetcode/tree/master/0435-non-overlapping-intervals) |
@@ -160,4 +162,8 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0003-longest-substring-without-repeating-characters](https://github.com/Yamiinii/Leetcode/tree/master/0003-longest-substring-without-repeating-characters) |
+## Two Pointers
+|  |
+| ------- |
+| [0015-3sum](https://github.com/Yamiinii/Leetcode/tree/master/0015-3sum) |
 <!---LeetCode Topics End-->
