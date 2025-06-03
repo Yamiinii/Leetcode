@@ -110,6 +110,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0044-wildcard-matching](https://github.com/Yamiinii/Leetcode/tree/master/0044-wildcard-matching) |
+| [0062-unique-paths](https://github.com/Yamiinii/Leetcode/tree/master/0062-unique-paths) |
 | [0070-climbing-stairs](https://github.com/Yamiinii/Leetcode/tree/master/0070-climbing-stairs) |
 | [0091-decode-ways](https://github.com/Yamiinii/Leetcode/tree/master/0091-decode-ways) |
 | [0121-best-time-to-buy-and-sell-stock](https://github.com/Yamiinii/Leetcode/tree/master/0121-best-time-to-buy-and-sell-stock) |
@@ -146,6 +147,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Math
 |  |
 | ------- |
+| [0062-unique-paths](https://github.com/Yamiinii/Leetcode/tree/master/0062-unique-paths) |
 | [0070-climbing-stairs](https://github.com/Yamiinii/Leetcode/tree/master/0070-climbing-stairs) |
 | [0268-missing-number](https://github.com/Yamiinii/Leetcode/tree/master/0268-missing-number) |
 | [0279-perfect-squares](https://github.com/Yamiinii/Leetcode/tree/master/0279-perfect-squares) |
@@ -190,4 +192,8 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0015-3sum](https://github.com/Yamiinii/Leetcode/tree/master/0015-3sum) |
+## Combinatorics
+|  |
+| ------- |
+| [0062-unique-paths](https://github.com/Yamiinii/Leetcode/tree/master/0062-unique-paths) |
 <!---LeetCode Topics End-->
