@@ -11,22 +11,36 @@
  */
 class Solution {
 public:
-    int maxPath(TreeNode* root,int& maxi)
+    int rec(TreeNode* root,int& ans)
     {
         if(root==NULL)
-            return 0;
-        int leftsum=max(0,maxPath(root->left,maxi));
-        int rightsum=max(0,maxPath(root->right,maxi));
-        
-        maxi=max(maxi,leftsum+rightsum+root->val);
-        return root->val+max(leftsum,rightsum);
+        return 0;
+
+        int left=max(0,rec(root->left,ans));
+        int right=max(0,rec(root->right,ans));
+
+        // int ans=0;
+        //it should be global
+        // if(left+right+root->val>left)
+        // ans=left+right+root->val;
+        // else if(left>right)
+        // ans=left;
+        //but I am thinking what if it is not the fault of root but either of right or left
+        // else
+        // ans=right;
+        ans=max(ans,root->val+left+right);
+        return root->val + max(left, right);  
     }
-    
+
     int maxPathSum(TreeNode* root) {
         if(root==NULL)
-            return 0;
-        int maxi=INT_MIN;
-        maxPath(root,maxi);
-        return maxi;
+        return 0;
+        if(root->left ==NULL && root->right ==NULL)
+        return root->val;
+        //for negative valued trees
+        //return rec(root,0);
+        int ans=INT_MIN;
+        rec(root,ans);
+        return ans;
     }
 };
