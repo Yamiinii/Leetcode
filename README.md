@@ -22,6 +22,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0925-construct-binary-tree-from-preorder-and-postorder-traversal](https://github.com/Yamiinii/Leetcode/tree/master/0925-construct-binary-tree-from-preorder-and-postorder-traversal) |
 | [1025-minimum-cost-for-tickets](https://github.com/Yamiinii/Leetcode/tree/master/1025-minimum-cost-for-tickets) |
 | [1036-rotting-oranges](https://github.com/Yamiinii/Leetcode/tree/master/1036-rotting-oranges) |
+| [1402-count-square-submatrices-with-all-ones](https://github.com/Yamiinii/Leetcode/tree/master/1402-count-square-submatrices-with-all-ones) |
 | [1700-minimum-time-to-make-rope-colorful](https://github.com/Yamiinii/Leetcode/tree/master/1700-minimum-time-to-make-rope-colorful) |
 | [2262-solving-questions-with-brainpower](https://github.com/Yamiinii/Leetcode/tree/master/2262-solving-questions-with-brainpower) |
 ## Binary Search
@@ -135,6 +136,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0747-min-cost-climbing-stairs](https://github.com/Yamiinii/Leetcode/tree/master/0747-min-cost-climbing-stairs) |
 | [1025-minimum-cost-for-tickets](https://github.com/Yamiinii/Leetcode/tree/master/1025-minimum-cost-for-tickets) |
 | [1236-n-th-tribonacci-number](https://github.com/Yamiinii/Leetcode/tree/master/1236-n-th-tribonacci-number) |
+| [1402-count-square-submatrices-with-all-ones](https://github.com/Yamiinii/Leetcode/tree/master/1402-count-square-submatrices-with-all-ones) |
 | [1700-minimum-time-to-make-rope-colorful](https://github.com/Yamiinii/Leetcode/tree/master/1700-minimum-time-to-make-rope-colorful) |
 | [2262-solving-questions-with-brainpower](https://github.com/Yamiinii/Leetcode/tree/master/2262-solving-questions-with-brainpower) |
 ## Greedy
@@ -192,6 +194,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0063-unique-paths-ii](https://github.com/Yamiinii/Leetcode/tree/master/0063-unique-paths-ii) |
 | [0064-minimum-path-sum](https://github.com/Yamiinii/Leetcode/tree/master/0064-minimum-path-sum) |
 | [1036-rotting-oranges](https://github.com/Yamiinii/Leetcode/tree/master/1036-rotting-oranges) |
+| [1402-count-square-submatrices-with-all-ones](https://github.com/Yamiinii/Leetcode/tree/master/1402-count-square-submatrices-with-all-ones) |
 ## Recursion
 |  |
 | ------- |
