@@ -1,81 +1,69 @@
-#include <vector>
-#include <stack>
-#include <algorithm> // for std::max
-using namespace std;
-
 class Solution {
 public:
-    int largestRectangleArea(vector<int>& heights) {
-        int n = heights.size();
+    int histogram(vector<int> & heights)
+    {
+        int n=heights.size();
         vector<int> left(n);
-        stack<int> st1;
-
-        // Compute left boundaries
-        for (int i = 0; i < n; i++) {
-            while (!st1.empty() && heights[st1.top()] >= heights[i])
-                st1.pop();
-
-            if (st1.empty())
-                left[i] = 0;
-            else
-                left[i] = st1.top() + 1;
-
-            st1.push(i);
-        }
-
-        // Clear the stack for reuse
-        while (!st1.empty())
-            st1.pop();
-
         vector<int> right(n);
-        stack<int> st2;
+        int maxi=0;
+        stack<int> st;
+        for(int i=0;i<n;i++)
+        {
+            while(!st.empty() && heights[st.top()]>=heights[i])
+            st.pop();
 
-        // Compute right boundaries
-        for (int i = n - 1; i >= 0; i--) {
-            while (!st2.empty() && heights[st2.top()] >= heights[i])
-                st2.pop();
-
-            if (st2.empty())
-                right[i] = n - 1;
+            if(st.empty())
+            left[i]=0;
             else
-                right[i] = st2.top() - 1;
+            left[i]=st.top()+1;
 
-            st2.push(i);
+            st.push(i);
+        }
+        while(!st.empty())
+        {
+            st.pop();
+        }
+        for(int i=n-1;i>=0;i--)
+        {
+            while(!st.empty() && heights[st.top()]>=heights[i])
+            st.pop();
+
+            if(st.empty())
+            right[i]=n-1;
+            else
+            right[i]=st.top()-1;
+
+            st.push(i);
         }
 
-        // Calculate maximum area
-        int maxArea = 0;
-        for (int i = 0; i < n; i++) {
-            int area = heights[i] * (right[i] - left[i] + 1);
-            maxArea = max(maxArea, area);
+        for(int i=0;i<n;i++)
+        {
+            maxi=max(maxi,heights[i]*(right[i]-left[i]+1));
         }
 
-        return maxArea;
+        return maxi;
     }
 
     int maximalRectangle(vector<vector<char>>& matrix) {
-        if (matrix.empty()) return 0;
-
-        int maxarea = 0;
-        int m = matrix.size();
-        int n = matrix[0].size();
-        vector<int> heights(n, 0); // Initialize heights array for the first row
-
-        // Iterate over each row of the matrix
-        for (int i = 0; i < m; i++) {
-            // Update the heights array based on the current row
-            for (int j = 0; j < n; j++) {
-                if (matrix[i][j] == '1') {
-                    heights[j] += 1;
-                } else {
-                    heights[j] = 0;
-                }
+        if(matrix.empty())
+        return 0;
+        int n=matrix.size();
+        int m=matrix[0].size();
+        int maxi=0;
+        vector<int> heights(m,0);
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                if(matrix[i][j]=='1')
+                heights[j]+=1;
+                else
+                heights[j]=0;
             }
 
-            // Compute the largest rectangle area in the histogram formed by 'heights'
-            maxarea = max(maxarea, largestRectangleArea(heights));
+            maxi=max(maxi,histogram(heights));
         }
 
-        return maxarea;
+        return maxi;
     }
 };
