@@ -8,34 +8,33 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-
 class Solution {
 public:
-    struct Compare {
-        bool operator()(ListNode* a, ListNode* b) {
-            return a->val > b->val;
-        }
-    };
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        if(lists.empty())
-            return NULL;
-          priority_queue<ListNode*, vector<ListNode*>, Compare> pq;
-              for (auto list : lists) {
-            if (list) {
-                pq.push(list);
-            }
+        priority_queue<pair<int,ListNode*>,vector<pair<int,ListNode*>>,greater<pair<int,ListNode*>>> pq;
+        for(int i=0;i<lists.size();i++)
+        {
+            if(lists[i])
+            pq.push({lists[i]->val,lists[i]});
         }
-        ListNode* ans=new ListNode();
-        ListNode* dummy=ans;
-        while (!pq.empty()) {
-            ListNode* node = pq.top();
+
+        ListNode* head=new ListNode(-1);
+        ListNode* temp=head;
+
+        while(!pq.empty())
+        {
+            pair<int,ListNode*> front=pq.top();
+            temp->next=front.second;
             pq.pop();
-            dummy->next = node;  // Link the smallest node to the result
-            dummy = dummy->next;  // Move the pointer
-            if (node->next) {
-                pq.push(node->next);  // Push the next node from the same list
+
+            if(front.second->next)
+            {
+                pq.push({front.second->next->val,front.second->next});
             }
+
+            temp=temp->next;
         }
-        return ans->next;
+
+        return head->next;
     }
 };
