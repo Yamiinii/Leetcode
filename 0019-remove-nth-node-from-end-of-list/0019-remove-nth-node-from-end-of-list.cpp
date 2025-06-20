@@ -10,50 +10,49 @@
  */
 class Solution {
 public:
-    int cntNodes(ListNode* head)
-    {
-        ListNode* temp=head;
-        int cnt=0;
-        while(temp!=NULL)
-        {
+    int cntNodes(ListNode* head) {
+        int cnt = 0;
+        ListNode* temp = head;
+        while (temp != nullptr) {
             cnt++;
-            temp=temp->next;
+            temp = temp->next;
         }
         return cnt;
     }
 
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        int k=cntNodes(head);
-        //case of 1st node
-        if(n==k)
-        {
-            ListNode* newhead=head->next;
+        int k = cntNodes(head);
+
+        // Case: Remove the first node (head)
+        if (n == k) {
+            ListNode* newHead = head->next;
             delete head;
-            return newhead;
+            return newHead;
         }
-     
-        ListNode* temp=head;
-        //case of last node
-        if(n==k && temp->next==NULL)
-        return NULL;
-    
-        for(int i=0;i<k-n-1;i++)
-        {
-            temp=temp->next;
+
+        ListNode* temp = head;
+
+        // Case: List has only one node and we need to remove it
+        if (n == k && temp->next == nullptr)
+            return nullptr;
+
+        // Move to the node just before the target
+        for (int i = 0; i < k - n - 1; i++) {
+            temp = temp->next;
         }
-            if(n==1)
-        {
-            ListNode* d=temp->next;
-            temp->next=NULL;
-            delete d;
+
+        // Case: Remove the last node
+        if (n == 1) {
+            ListNode* toDelete = temp->next;
+            temp->next = nullptr;
+            delete toDelete;
             return head;
         }
-        
-        //case of general node
-        ListNode* nextt=temp->next->next;
-        ListNode* d=temp->next;
-        temp->next=nextt;
-        delete d;
+
+        // General case
+        ListNode* toDelete = temp->next;
+        temp->next = toDelete->next;
+        delete toDelete;
 
         return head;
     }
