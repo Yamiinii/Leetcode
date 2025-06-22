@@ -15,6 +15,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0049-group-anagrams](https://github.com/Yamiinii/Leetcode/tree/master/0049-group-anagrams) |
 | [0053-maximum-subarray](https://github.com/Yamiinii/Leetcode/tree/master/0053-maximum-subarray) |
 | [0054-spiral-matrix](https://github.com/Yamiinii/Leetcode/tree/master/0054-spiral-matrix) |
+| [0055-jump-game](https://github.com/Yamiinii/Leetcode/tree/master/0055-jump-game) |
 | [0063-unique-paths-ii](https://github.com/Yamiinii/Leetcode/tree/master/0063-unique-paths-ii) |
 | [0064-minimum-path-sum](https://github.com/Yamiinii/Leetcode/tree/master/0064-minimum-path-sum) |
 | [0084-largest-rectangle-in-histogram](https://github.com/Yamiinii/Leetcode/tree/master/0084-largest-rectangle-in-histogram) |
@@ -140,6 +141,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0005-longest-palindromic-substring](https://github.com/Yamiinii/Leetcode/tree/master/0005-longest-palindromic-substring) |
 | [0044-wildcard-matching](https://github.com/Yamiinii/Leetcode/tree/master/0044-wildcard-matching) |
 | [0053-maximum-subarray](https://github.com/Yamiinii/Leetcode/tree/master/0053-maximum-subarray) |
+| [0055-jump-game](https://github.com/Yamiinii/Leetcode/tree/master/0055-jump-game) |
 | [0062-unique-paths](https://github.com/Yamiinii/Leetcode/tree/master/0062-unique-paths) |
 | [0063-unique-paths-ii](https://github.com/Yamiinii/Leetcode/tree/master/0063-unique-paths-ii) |
 | [0064-minimum-path-sum](https://github.com/Yamiinii/Leetcode/tree/master/0064-minimum-path-sum) |
@@ -165,6 +167,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | ------- |
 | [0011-container-with-most-water](https://github.com/Yamiinii/Leetcode/tree/master/0011-container-with-most-water) |
 | [0044-wildcard-matching](https://github.com/Yamiinii/Leetcode/tree/master/0044-wildcard-matching) |
+| [0055-jump-game](https://github.com/Yamiinii/Leetcode/tree/master/0055-jump-game) |
 | [0435-non-overlapping-intervals](https://github.com/Yamiinii/Leetcode/tree/master/0435-non-overlapping-intervals) |
 | [1700-minimum-time-to-make-rope-colorful](https://github.com/Yamiinii/Leetcode/tree/master/1700-minimum-time-to-make-rope-colorful) |
 ## Sorting
