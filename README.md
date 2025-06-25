@@ -21,6 +21,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0063-unique-paths-ii](https://github.com/Yamiinii/Leetcode/tree/master/0063-unique-paths-ii) |
 | [0064-minimum-path-sum](https://github.com/Yamiinii/Leetcode/tree/master/0064-minimum-path-sum) |
 | [0073-set-matrix-zeroes](https://github.com/Yamiinii/Leetcode/tree/master/0073-set-matrix-zeroes) |
+| [0079-word-search](https://github.com/Yamiinii/Leetcode/tree/master/0079-word-search) |
 | [0084-largest-rectangle-in-histogram](https://github.com/Yamiinii/Leetcode/tree/master/0084-largest-rectangle-in-histogram) |
 | [0085-maximal-rectangle](https://github.com/Yamiinii/Leetcode/tree/master/0085-maximal-rectangle) |
 | [0105-construct-binary-tree-from-preorder-and-inorder-traversal](https://github.com/Yamiinii/Leetcode/tree/master/0105-construct-binary-tree-from-preorder-and-inorder-traversal) |
@@ -61,6 +62,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Depth-First Search
 |  |
 | ------- |
+| [0079-word-search](https://github.com/Yamiinii/Leetcode/tree/master/0079-word-search) |
 | [0104-maximum-depth-of-binary-tree](https://github.com/Yamiinii/Leetcode/tree/master/0104-maximum-depth-of-binary-tree) |
 | [0124-binary-tree-maximum-path-sum](https://github.com/Yamiinii/Leetcode/tree/master/0124-binary-tree-maximum-path-sum) |
 | [0207-course-schedule](https://github.com/Yamiinii/Leetcode/tree/master/0207-course-schedule) |
@@ -102,6 +104,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0044-wildcard-matching](https://github.com/Yamiinii/Leetcode/tree/master/0044-wildcard-matching) |
 | [0049-group-anagrams](https://github.com/Yamiinii/Leetcode/tree/master/0049-group-anagrams) |
 | [0076-minimum-window-substring](https://github.com/Yamiinii/Leetcode/tree/master/0076-minimum-window-substring) |
+| [0079-word-search](https://github.com/Yamiinii/Leetcode/tree/master/0079-word-search) |
 | [0091-decode-ways](https://github.com/Yamiinii/Leetcode/tree/master/0091-decode-ways) |
 | [0208-implement-trie-prefix-tree](https://github.com/Yamiinii/Leetcode/tree/master/0208-implement-trie-prefix-tree) |
 | [0297-serialize-and-deserialize-binary-tree](https://github.com/Yamiinii/Leetcode/tree/master/0297-serialize-and-deserialize-binary-tree) |
@@ -231,6 +234,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0063-unique-paths-ii](https://github.com/Yamiinii/Leetcode/tree/master/0063-unique-paths-ii) |
 | [0064-minimum-path-sum](https://github.com/Yamiinii/Leetcode/tree/master/0064-minimum-path-sum) |
 | [0073-set-matrix-zeroes](https://github.com/Yamiinii/Leetcode/tree/master/0073-set-matrix-zeroes) |
+| [0079-word-search](https://github.com/Yamiinii/Leetcode/tree/master/0079-word-search) |
 | [0085-maximal-rectangle](https://github.com/Yamiinii/Leetcode/tree/master/0085-maximal-rectangle) |
 | [0221-maximal-square](https://github.com/Yamiinii/Leetcode/tree/master/0221-maximal-square) |
 | [1036-rotting-oranges](https://github.com/Yamiinii/Leetcode/tree/master/1036-rotting-oranges) |
@@ -289,6 +293,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0039-combination-sum](https://github.com/Yamiinii/Leetcode/tree/master/0039-combination-sum) |
+| [0079-word-search](https://github.com/Yamiinii/Leetcode/tree/master/0079-word-search) |
 ## Simulation
 |  |
 | ------- |
