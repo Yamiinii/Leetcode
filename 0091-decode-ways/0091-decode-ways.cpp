@@ -1,21 +1,36 @@
 class Solution {
 public:
-    int numDecodings(string s) {
-        int n=s.size();
-        if (n == 0 || s[0] == '0') return 0;
-        vector<int> dp(n+1,0);
-        dp[0]=1;
-        dp[1]=1;
-        for(int i=2;i<=n;i++)
+    int rec(string s,int n ,int idx,vector<int> &dp)
+    {
+        if(idx==n)
         {
-            if(s[i-1]!='0')
-            dp[i]+=dp[i-1];
-
-            //if (s[i-1]=='1' || (s[i-1]=='2' && s[i]>='0' && s[i]<='6'))
-            if (s[i - 2] == '1' || (s[i - 2] == '2' && s[i - 1] >= '0' && s[i - 1] <= '6'))
-            dp[i]+=dp[i-2];
+           return 1;
         }
 
-        return dp[n];
+        if(s[idx]=='0')
+        return 0;
+
+        if(dp[idx]!=-1)
+        return dp[idx];
+
+        int ways=0;
+        ways+=rec(s,n,idx+1,dp);
+        if(idx+1<n)
+        {
+            if(s[idx]=='1' || (s[idx]=='2' && s[idx+1]>='0' && s[idx+1]<='6'))
+            ways+=rec(s,n,idx+2,dp);
+        }
+
+        return dp[idx]=ways;
+    }
+
+    int numDecodings(string s) {
+        int n=s.size();
+        if(n<=0)
+        return 0;
+        // int cnt=0;
+        vector<int> dp(n,-1);
+        return rec(s,n,0,dp);
+        // return cnt;
     }
 };
