@@ -11,23 +11,24 @@
  */
 class Solution {
 public:
-    int rec(TreeNode* root)
+    int rec(TreeNode* root,int &maxi)
     {
         if(root==NULL)
         return 0;
-
         int ans=0;
 
-        int left=root->left?rec(root->left):0;
-        int right=root->right?rec(root->right):0;
+        int left=rec(root->left,maxi);
+        int right=rec(root->right,maxi);
 
-        ans=1+max(left,right);
-
-        return ans;
+        int curr=1+max(left,right);
+        maxi=max(maxi,curr);
+        return curr;
         
     }
 
     int maxDepth(TreeNode* root) {
-        return rec(root);
+        int maxi=0;
+        rec(root,maxi);
+        return maxi;
     }
 };
