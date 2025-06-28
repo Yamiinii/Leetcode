@@ -1,23 +1,32 @@
 class Solution {
 public:
-    void gen(int n,int opencnt,int closecnt,vector<string>& ans,string temp)
+    void rec(string s,vector<string>& ans,int open,int close)
     {
-        if(temp.size()==2*n)
+        if(close<open)
+        return; 
+
+        if(open==0 && close==0)
         {
-            ans.push_back(temp);
+            ans.push_back(s);
             return;
         }
-        
-        if(opencnt<n)
-            gen(n,opencnt+1,closecnt,ans,temp+"(");
-        if(closecnt<opencnt)
-            gen(n,opencnt,closecnt+1,ans,temp+")");
+
+        // if(open==0)
+        // rec(s+')',ans,open,close-1);
+
+        // else if(open==close)
+        // rec(s+'(',ans,open-1,close);
+
+         if (open > 0)
+            rec(s + '(', ans, open - 1, close);
+
+        if (close > 0)
+            rec(s + ')', ans, open, close - 1);
     }
-    
     vector<string> generateParenthesis(int n) {
+        string s;
         vector<string> ans;
-        if(n>0)
-            gen(n,1,0,ans,"(");
+        rec(s,ans,n,n);
         return ans;
     }
 };
