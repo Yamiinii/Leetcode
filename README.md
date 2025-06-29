@@ -41,6 +41,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [1402-count-square-submatrices-with-all-ones](https://github.com/Yamiinii/Leetcode/tree/master/1402-count-square-submatrices-with-all-ones) |
 | [1700-minimum-time-to-make-rope-colorful](https://github.com/Yamiinii/Leetcode/tree/master/1700-minimum-time-to-make-rope-colorful) |
 | [2262-solving-questions-with-brainpower](https://github.com/Yamiinii/Leetcode/tree/master/2262-solving-questions-with-brainpower) |
+| [2552-maximum-sum-of-distinct-subarrays-with-length-k](https://github.com/Yamiinii/Leetcode/tree/master/2552-maximum-sum-of-distinct-subarrays-with-length-k) |
 ## Binary Search
 |  |
 | ------- |
@@ -143,6 +144,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0208-implement-trie-prefix-tree](https://github.com/Yamiinii/Leetcode/tree/master/0208-implement-trie-prefix-tree) |
 | [0268-missing-number](https://github.com/Yamiinii/Leetcode/tree/master/0268-missing-number) |
 | [0925-construct-binary-tree-from-preorder-and-postorder-traversal](https://github.com/Yamiinii/Leetcode/tree/master/0925-construct-binary-tree-from-preorder-and-postorder-traversal) |
+| [2552-maximum-sum-of-distinct-subarrays-with-length-k](https://github.com/Yamiinii/Leetcode/tree/master/2552-maximum-sum-of-distinct-subarrays-with-length-k) |
 ## Divide and Conquer
 |  |
 | ------- |
@@ -267,6 +269,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | ------- |
 | [0003-longest-substring-without-repeating-characters](https://github.com/Yamiinii/Leetcode/tree/master/0003-longest-substring-without-repeating-characters) |
 | [0076-minimum-window-substring](https://github.com/Yamiinii/Leetcode/tree/master/0076-minimum-window-substring) |
+| [2552-maximum-sum-of-distinct-subarrays-with-length-k](https://github.com/Yamiinii/Leetcode/tree/master/2552-maximum-sum-of-distinct-subarrays-with-length-k) |
 ## Two Pointers
 |  |
 | ------- |
