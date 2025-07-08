@@ -22,6 +22,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0063-unique-paths-ii](https://github.com/Yamiinii/Leetcode/tree/master/0063-unique-paths-ii) |
 | [0064-minimum-path-sum](https://github.com/Yamiinii/Leetcode/tree/master/0064-minimum-path-sum) |
 | [0073-set-matrix-zeroes](https://github.com/Yamiinii/Leetcode/tree/master/0073-set-matrix-zeroes) |
+| [0078-subsets](https://github.com/Yamiinii/Leetcode/tree/master/0078-subsets) |
 | [0079-word-search](https://github.com/Yamiinii/Leetcode/tree/master/0079-word-search) |
 | [0084-largest-rectangle-in-histogram](https://github.com/Yamiinii/Leetcode/tree/master/0084-largest-rectangle-in-histogram) |
 | [0085-maximal-rectangle](https://github.com/Yamiinii/Leetcode/tree/master/0085-maximal-rectangle) |
@@ -248,6 +249,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Bit Manipulation
 |  |
 | ------- |
+| [0078-subsets](https://github.com/Yamiinii/Leetcode/tree/master/0078-subsets) |
 | [0190-reverse-bits](https://github.com/Yamiinii/Leetcode/tree/master/0190-reverse-bits) |
 | [0191-number-of-1-bits](https://github.com/Yamiinii/Leetcode/tree/master/0191-number-of-1-bits) |
 | [0268-missing-number](https://github.com/Yamiinii/Leetcode/tree/master/0268-missing-number) |
@@ -327,6 +329,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | ------- |
 | [0022-generate-parentheses](https://github.com/Yamiinii/Leetcode/tree/master/0022-generate-parentheses) |
 | [0039-combination-sum](https://github.com/Yamiinii/Leetcode/tree/master/0039-combination-sum) |
+| [0078-subsets](https://github.com/Yamiinii/Leetcode/tree/master/0078-subsets) |
 | [0079-word-search](https://github.com/Yamiinii/Leetcode/tree/master/0079-word-search) |
 ## Simulation
 |  |
