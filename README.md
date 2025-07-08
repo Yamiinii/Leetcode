@@ -133,6 +133,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0091-decode-ways](https://github.com/Yamiinii/Leetcode/tree/master/0091-decode-ways) |
 | [0208-implement-trie-prefix-tree](https://github.com/Yamiinii/Leetcode/tree/master/0208-implement-trie-prefix-tree) |
 | [0297-serialize-and-deserialize-binary-tree](https://github.com/Yamiinii/Leetcode/tree/master/0297-serialize-and-deserialize-binary-tree) |
+| [0678-valid-parenthesis-string](https://github.com/Yamiinii/Leetcode/tree/master/0678-valid-parenthesis-string) |
 | [1700-minimum-time-to-make-rope-colorful](https://github.com/Yamiinii/Leetcode/tree/master/1700-minimum-time-to-make-rope-colorful) |
 ## Design
 |  |
@@ -194,6 +195,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0279-perfect-squares](https://github.com/Yamiinii/Leetcode/tree/master/0279-perfect-squares) |
 | [0338-counting-bits](https://github.com/Yamiinii/Leetcode/tree/master/0338-counting-bits) |
 | [0435-non-overlapping-intervals](https://github.com/Yamiinii/Leetcode/tree/master/0435-non-overlapping-intervals) |
+| [0678-valid-parenthesis-string](https://github.com/Yamiinii/Leetcode/tree/master/0678-valid-parenthesis-string) |
 | [0747-min-cost-climbing-stairs](https://github.com/Yamiinii/Leetcode/tree/master/0747-min-cost-climbing-stairs) |
 | [1025-minimum-cost-for-tickets](https://github.com/Yamiinii/Leetcode/tree/master/1025-minimum-cost-for-tickets) |
 | [1236-n-th-tribonacci-number](https://github.com/Yamiinii/Leetcode/tree/master/1236-n-th-tribonacci-number) |
@@ -207,6 +209,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0044-wildcard-matching](https://github.com/Yamiinii/Leetcode/tree/master/0044-wildcard-matching) |
 | [0055-jump-game](https://github.com/Yamiinii/Leetcode/tree/master/0055-jump-game) |
 | [0435-non-overlapping-intervals](https://github.com/Yamiinii/Leetcode/tree/master/0435-non-overlapping-intervals) |
+| [0678-valid-parenthesis-string](https://github.com/Yamiinii/Leetcode/tree/master/0678-valid-parenthesis-string) |
 | [1700-minimum-time-to-make-rope-colorful](https://github.com/Yamiinii/Leetcode/tree/master/1700-minimum-time-to-make-rope-colorful) |
 ## Sorting
 |  |
@@ -311,6 +314,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0042-trapping-rain-water](https://github.com/Yamiinii/Leetcode/tree/master/0042-trapping-rain-water) |
 | [0084-largest-rectangle-in-histogram](https://github.com/Yamiinii/Leetcode/tree/master/0084-largest-rectangle-in-histogram) |
 | [0085-maximal-rectangle](https://github.com/Yamiinii/Leetcode/tree/master/0085-maximal-rectangle) |
+| [0678-valid-parenthesis-string](https://github.com/Yamiinii/Leetcode/tree/master/0678-valid-parenthesis-string) |
 ## Monotonic Stack
 |  |
 | ------- |
