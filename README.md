@@ -35,6 +35,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0215-kth-largest-element-in-an-array](https://github.com/Yamiinii/Leetcode/tree/master/0215-kth-largest-element-in-an-array) |
 | [0221-maximal-square](https://github.com/Yamiinii/Leetcode/tree/master/0221-maximal-square) |
 | [0268-missing-number](https://github.com/Yamiinii/Leetcode/tree/master/0268-missing-number) |
+| [0399-evaluate-division](https://github.com/Yamiinii/Leetcode/tree/master/0399-evaluate-division) |
 | [0435-non-overlapping-intervals](https://github.com/Yamiinii/Leetcode/tree/master/0435-non-overlapping-intervals) |
 | [0747-min-cost-climbing-stairs](https://github.com/Yamiinii/Leetcode/tree/master/0747-min-cost-climbing-stairs) |
 | [0925-construct-binary-tree-from-preorder-and-postorder-traversal](https://github.com/Yamiinii/Leetcode/tree/master/0925-construct-binary-tree-from-preorder-and-postorder-traversal) |
@@ -82,6 +83,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0235-lowest-common-ancestor-of-a-binary-search-tree](https://github.com/Yamiinii/Leetcode/tree/master/0235-lowest-common-ancestor-of-a-binary-search-tree) |
 | [0236-lowest-common-ancestor-of-a-binary-tree](https://github.com/Yamiinii/Leetcode/tree/master/0236-lowest-common-ancestor-of-a-binary-tree) |
 | [0297-serialize-and-deserialize-binary-tree](https://github.com/Yamiinii/Leetcode/tree/master/0297-serialize-and-deserialize-binary-tree) |
+| [0399-evaluate-division](https://github.com/Yamiinii/Leetcode/tree/master/0399-evaluate-division) |
 | [0543-diameter-of-binary-tree](https://github.com/Yamiinii/Leetcode/tree/master/0543-diameter-of-binary-tree) |
 | [0572-subtree-of-another-tree](https://github.com/Yamiinii/Leetcode/tree/master/0572-subtree-of-another-tree) |
 ## Breadth-First Search
@@ -96,6 +98,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0226-invert-binary-tree](https://github.com/Yamiinii/Leetcode/tree/master/0226-invert-binary-tree) |
 | [0279-perfect-squares](https://github.com/Yamiinii/Leetcode/tree/master/0279-perfect-squares) |
 | [0297-serialize-and-deserialize-binary-tree](https://github.com/Yamiinii/Leetcode/tree/master/0297-serialize-and-deserialize-binary-tree) |
+| [0399-evaluate-division](https://github.com/Yamiinii/Leetcode/tree/master/0399-evaluate-division) |
 | [1036-rotting-oranges](https://github.com/Yamiinii/Leetcode/tree/master/1036-rotting-oranges) |
 ## Binary Tree
 |  |
@@ -133,6 +136,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0091-decode-ways](https://github.com/Yamiinii/Leetcode/tree/master/0091-decode-ways) |
 | [0208-implement-trie-prefix-tree](https://github.com/Yamiinii/Leetcode/tree/master/0208-implement-trie-prefix-tree) |
 | [0297-serialize-and-deserialize-binary-tree](https://github.com/Yamiinii/Leetcode/tree/master/0297-serialize-and-deserialize-binary-tree) |
+| [0399-evaluate-division](https://github.com/Yamiinii/Leetcode/tree/master/0399-evaluate-division) |
 | [0678-valid-parenthesis-string](https://github.com/Yamiinii/Leetcode/tree/master/0678-valid-parenthesis-string) |
 | [1700-minimum-time-to-make-rope-colorful](https://github.com/Yamiinii/Leetcode/tree/master/1700-minimum-time-to-make-rope-colorful) |
 ## Design
@@ -225,6 +229,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0207-course-schedule](https://github.com/Yamiinii/Leetcode/tree/master/0207-course-schedule) |
+| [0399-evaluate-division](https://github.com/Yamiinii/Leetcode/tree/master/0399-evaluate-division) |
 ## Topological Sort
 |  |
 | ------- |
@@ -343,4 +348,12 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0054-spiral-matrix](https://github.com/Yamiinii/Leetcode/tree/master/0054-spiral-matrix) |
+## Union Find
+|  |
+| ------- |
+| [0399-evaluate-division](https://github.com/Yamiinii/Leetcode/tree/master/0399-evaluate-division) |
+## Shortest Path
+|  |
+| ------- |
+| [0399-evaluate-division](https://github.com/Yamiinii/Leetcode/tree/master/0399-evaluate-division) |
 <!---LeetCode Topics End-->
