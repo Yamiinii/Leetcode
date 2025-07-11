@@ -37,6 +37,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0268-missing-number](https://github.com/Yamiinii/Leetcode/tree/master/0268-missing-number) |
 | [0399-evaluate-division](https://github.com/Yamiinii/Leetcode/tree/master/0399-evaluate-division) |
 | [0435-non-overlapping-intervals](https://github.com/Yamiinii/Leetcode/tree/master/0435-non-overlapping-intervals) |
+| [0560-subarray-sum-equals-k](https://github.com/Yamiinii/Leetcode/tree/master/0560-subarray-sum-equals-k) |
 | [0747-min-cost-climbing-stairs](https://github.com/Yamiinii/Leetcode/tree/master/0747-min-cost-climbing-stairs) |
 | [0925-construct-binary-tree-from-preorder-and-postorder-traversal](https://github.com/Yamiinii/Leetcode/tree/master/0925-construct-binary-tree-from-preorder-and-postorder-traversal) |
 | [1025-minimum-cost-for-tickets](https://github.com/Yamiinii/Leetcode/tree/master/1025-minimum-cost-for-tickets) |
@@ -163,6 +164,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0105-construct-binary-tree-from-preorder-and-inorder-traversal](https://github.com/Yamiinii/Leetcode/tree/master/0105-construct-binary-tree-from-preorder-and-inorder-traversal) |
 | [0208-implement-trie-prefix-tree](https://github.com/Yamiinii/Leetcode/tree/master/0208-implement-trie-prefix-tree) |
 | [0268-missing-number](https://github.com/Yamiinii/Leetcode/tree/master/0268-missing-number) |
+| [0560-subarray-sum-equals-k](https://github.com/Yamiinii/Leetcode/tree/master/0560-subarray-sum-equals-k) |
 | [0925-construct-binary-tree-from-preorder-and-postorder-traversal](https://github.com/Yamiinii/Leetcode/tree/master/0925-construct-binary-tree-from-preorder-and-postorder-traversal) |
 | [2552-maximum-sum-of-distinct-subarrays-with-length-k](https://github.com/Yamiinii/Leetcode/tree/master/2552-maximum-sum-of-distinct-subarrays-with-length-k) |
 ## Divide and Conquer
@@ -356,4 +358,8 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0399-evaluate-division](https://github.com/Yamiinii/Leetcode/tree/master/0399-evaluate-division) |
+## Prefix Sum
+|  |
+| ------- |
+| [0560-subarray-sum-equals-k](https://github.com/Yamiinii/Leetcode/tree/master/0560-subarray-sum-equals-k) |
 <!---LeetCode Topics End-->
