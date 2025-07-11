@@ -1,18 +1,21 @@
 class Solution {
 public:
-    //n and n what if we want to optimize space
     int subarraySum(vector<int>& nums, int k) {
         unordered_map<int,int> mpp;
-        int cnt=0;
+        //sum=0
         mpp[0]=1;
-        int preSum=0;
-        for(int i=0;i<nums.size();i++)
+        int curr_sum=0;
+        int cnt=0;
+        for(auto i:nums)
         {
-            preSum+=nums[i];
-            int remove=preSum-k;
-            cnt+=mpp[remove];
-            mpp[preSum]++;
+            curr_sum+=i;
+            if(mpp.find(curr_sum-k)!=mpp.end())
+            {
+                cnt+=mpp[curr_sum-k];
+            }
+            mpp[curr_sum]++;
         }
+
         return cnt;
     }
 };
